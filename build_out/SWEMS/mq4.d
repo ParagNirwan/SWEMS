@@ -1,4 +1,4 @@
-main.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c \
+mq4.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOSConfig.h \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/platform.h \
@@ -9,7 +9,6 @@ main.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/mpu_wrappers.h \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h \
  /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/list.h \
- /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c \
  /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c \
  /home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h \
  /home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h \
@@ -26,12 +25,7 @@ main.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c \
  /home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_adc.h \
  /home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_dma.h \
  /home/parag/bl_iot_sdk/components/utils/include/utils_list.h \
- /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/color.h \
- /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c \
- /home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_timer.h \
- /home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_uart.h \
- /home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_uart.h \
- /home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/uart_reg.h
+ /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/color.h
 
 /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h:
 
@@ -52,8 +46,6 @@ main.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c \
 /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h:
 
 /home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/list.h:
-
-/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c:
 
 /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c:
 
@@ -88,14 +80,4 @@ main.o: /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c \
 /home/parag/bl_iot_sdk/components/utils/include/utils_list.h:
 
 /home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/color.h:
-
-/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c:
-
-/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_timer.h:
-
-/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_uart.h:
-
-/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_uart.h:
-
-/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/uart_reg.h:
-/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/./main.c:
+/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/./mq4.c:

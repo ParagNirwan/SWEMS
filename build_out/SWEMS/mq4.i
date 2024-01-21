@@ -1,8 +1,8 @@
-# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c"
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
 # 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/build_out/SWEMS//"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c"
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h" 1
 # 34 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h"
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
@@ -316,7 +316,7 @@ typedef struct xSTATIC_STREAM_BUFFER
 
 
 typedef StaticStreamBuffer_t StaticMessageBuffer_t;
-# 2 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 2 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h" 1
 # 36 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h"
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/list.h" 1
@@ -636,7 +636,8 @@ TaskHandle_t pvTaskIncrementMutexHeldCount( void ) ;
 
 
 void vTaskInternalSetTimeOutState( TimeOut_t * const pxTimeOut ) ;
-# 3 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 3 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 1 3
 # 29 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 3
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/_ansi.h" 1 3
@@ -1897,7 +1898,475 @@ _putchar_unlocked(int _c)
 }
 # 797 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 3
 
-# 4 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 5 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 1 3
+
+
+
+
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/machine/ieeefp.h" 1 3
+# 8 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 2 3
+
+
+
+# 86 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern double atan (double);
+extern double cos (double);
+extern double sin (double);
+extern double tan (double);
+extern double tanh (double);
+extern double frexp (double, int *);
+extern double modf (double, double *);
+extern double ceil (double);
+extern double fabs (double);
+extern double floor (double);
+
+
+
+
+
+
+extern double acos (double);
+extern double asin (double);
+extern double atan2 (double, double);
+extern double cosh (double);
+extern double sinh (double);
+extern double exp (double);
+extern double ldexp (double, int);
+extern double log (double);
+extern double log10 (double);
+extern double pow (double, double);
+extern double sqrt (double);
+extern double fmod (double, double);
+
+
+
+
+extern int finite (double);
+extern int finitef (float);
+extern int finitel (long double);
+extern int isinff (float);
+extern int isnanf (float);
+
+
+
+
+
+extern int isinf (double);
+
+
+
+
+extern int isnan (double);
+# 150 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+    typedef float float_t;
+    typedef double double_t;
+# 194 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern int __isinff (float x);
+extern int __isinfd (double x);
+extern int __isnanf (float x);
+extern int __isnand (double x);
+extern int __fpclassifyf (float x);
+extern int __fpclassifyd (double x);
+extern int __signbitf (float x);
+extern int __signbitd (double x);
+# 290 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern double infinity (void);
+extern double nan (const char *);
+extern double copysign (double, double);
+extern double logb (double);
+extern int ilogb (double);
+
+extern double asinh (double);
+extern double cbrt (double);
+extern double nextafter (double, double);
+extern double rint (double);
+extern double scalbn (double, int);
+
+extern double exp2 (double);
+extern double scalbln (double, long int);
+extern double tgamma (double);
+extern double nearbyint (double);
+extern long int lrint (double);
+extern long long int llrint (double);
+extern double round (double);
+extern long int lround (double);
+extern long long int llround (double);
+extern double trunc (double);
+extern double remquo (double, double, int *);
+extern double fdim (double, double);
+extern double fmax (double, double);
+extern double fmin (double, double);
+extern double fma (double, double, double);
+
+
+extern double log1p (double);
+extern double expm1 (double);
+
+
+
+extern double acosh (double);
+extern double atanh (double);
+extern double remainder (double, double);
+extern double gamma (double);
+extern double lgamma (double);
+extern double erf (double);
+extern double erfc (double);
+extern double log2 (double);
+
+
+
+
+
+extern double hypot (double, double);
+
+
+
+
+
+
+extern float atanf (float);
+extern float cosf (float);
+extern float sinf (float);
+extern float tanf (float);
+extern float tanhf (float);
+extern float frexpf (float, int *);
+extern float modff (float, float *);
+extern float ceilf (float);
+extern float fabsf (float);
+extern float floorf (float);
+
+
+extern float acosf (float);
+extern float asinf (float);
+extern float atan2f (float, float);
+extern float coshf (float);
+extern float sinhf (float);
+extern float expf (float);
+extern float ldexpf (float, int);
+extern float logf (float);
+extern float log10f (float);
+extern float powf (float, float);
+extern float sqrtf (float);
+extern float fmodf (float, float);
+
+
+
+
+extern float exp2f (float);
+extern float scalblnf (float, long int);
+extern float tgammaf (float);
+extern float nearbyintf (float);
+extern long int lrintf (float);
+extern long long int llrintf (float);
+extern float roundf (float);
+extern long int lroundf (float);
+extern long long int llroundf (float);
+extern float truncf (float);
+extern float remquof (float, float, int *);
+extern float fdimf (float, float);
+extern float fmaxf (float, float);
+extern float fminf (float, float);
+extern float fmaf (float, float, float);
+
+extern float infinityf (void);
+extern float nanf (const char *);
+extern float copysignf (float, float);
+extern float logbf (float);
+extern int ilogbf (float);
+
+extern float asinhf (float);
+extern float cbrtf (float);
+extern float nextafterf (float, float);
+extern float rintf (float);
+extern float scalbnf (float, int);
+extern float log1pf (float);
+extern float expm1f (float);
+
+
+extern float acoshf (float);
+extern float atanhf (float);
+extern float remainderf (float, float);
+extern float gammaf (float);
+extern float lgammaf (float);
+extern float erff (float);
+extern float erfcf (float);
+extern float log2f (float);
+extern float hypotf (float, float);
+# 490 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern long double hypotl (long double, long double);
+extern long double sqrtl (long double);
+# 503 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern double drem (double, double);
+extern float dremf (float, float);
+
+
+
+extern double gamma_r (double, int *);
+extern double lgamma_r (double, int *);
+extern float gammaf_r (float, int *);
+extern float lgammaf_r (float, int *);
+
+
+
+extern double y0 (double);
+extern double y1 (double);
+extern double yn (int, double);
+extern double j0 (double);
+extern double j1 (double);
+extern double jn (int, double);
+
+
+
+extern float y0f (float);
+extern float y1f (float);
+extern float ynf (int, float);
+extern float j0f (float);
+extern float j1f (float);
+extern float jnf (int, float);
+# 565 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+extern int *__signgam (void);
+# 607 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/math.h" 3
+enum __fdlibm_version
+{
+  __fdlibm_ieee = -1,
+  __fdlibm_posix
+};
+
+
+
+
+extern enum __fdlibm_version __fdlib_version;
+
+
+
+
+
+
+
+# 6 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 1 3
+# 18 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 3
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/_intsup.h" 1 3
+# 35 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/_intsup.h" 3
+       
+       
+       
+       
+       
+       
+       
+       
+# 190 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/_intsup.h" 3
+       
+       
+       
+       
+       
+       
+       
+       
+# 19 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 2 3
+
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
+# 23 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 2 3
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/_locale.h" 1 3
+# 9 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/_locale.h" 3
+struct __locale_t;
+typedef struct __locale_t *locale_t;
+# 26 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 2 3
+# 312 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/inttypes.h" 3
+typedef struct {
+  intmax_t quot;
+  intmax_t rem;
+} imaxdiv_t;
+
+struct _reent;
+
+
+
+
+
+extern intmax_t imaxabs(intmax_t j);
+extern imaxdiv_t imaxdiv(intmax_t numer, intmax_t denomer);
+extern intmax_t strtoimax(const char *restrict, char **restrict, int);
+extern intmax_t _strtoimax_r(struct _reent *, const char *restrict, char **restrict, int);
+extern uintmax_t strtoumax(const char *restrict, char **restrict, int);
+extern uintmax_t _strtoumax_r(struct _reent *, const char *restrict, char **restrict, int);
+extern intmax_t wcstoimax(const wchar_t *restrict, wchar_t **restrict, int);
+extern intmax_t _wcstoimax_r(struct _reent *, const wchar_t *restrict, wchar_t **restrict, int);
+extern uintmax_t wcstoumax(const wchar_t *restrict, wchar_t **restrict, int);
+extern uintmax_t _wcstoumax_r(struct _reent *, const wchar_t *restrict, wchar_t **restrict, int);
+
+
+extern intmax_t strtoimax_l(const char *restrict, char **_restrict, int, locale_t);
+extern uintmax_t strtoumax_l(const char *restrict, char **_restrict, int, locale_t);
+extern intmax_t wcstoimax_l(const wchar_t *restrict, wchar_t **_restrict, int, locale_t);
+extern uintmax_t wcstoumax_l(const wchar_t *restrict, wchar_t **_restrict, int, locale_t);
+# 7 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 1 3
+# 17 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 3
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
+# 18 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 2 3
+
+
+
+
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/strings.h" 1 3
+# 44 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/strings.h" 3
+
+
+int bcmp(const void *, const void *, size_t) __attribute__((__pure__));
+void bcopy(const void *, void *, size_t);
+void bzero(void *, size_t);
+
+
+void explicit_bzero(void *, size_t);
+
+
+int ffs(int) __attribute__((__const__));
+
+
+int ffsl(long) __attribute__((__const__));
+int ffsll(long long) __attribute__((__const__));
+int fls(int) __attribute__((__const__));
+int flsl(long) __attribute__((__const__));
+int flsll(long long) __attribute__((__const__));
+
+
+char *index(const char *, int) __attribute__((__pure__));
+char *rindex(const char *, int) __attribute__((__pure__));
+
+int strcasecmp(const char *, const char *) __attribute__((__pure__));
+int strncasecmp(const char *, const char *, size_t) __attribute__((__pure__));
+
+
+int strcasecmp_l (const char *, const char *, locale_t);
+int strncasecmp_l (const char *, const char *, size_t, locale_t);
+
+
+# 25 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 2 3
+
+
+
+
+void * memchr (const void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void * memcpy (void *restrict, const void *restrict, size_t);
+void * memmove (void *, const void *, size_t);
+void * memset (void *, int, size_t);
+char *strcat (char *restrict, const char *restrict);
+char *strchr (const char *, int);
+int strcmp (const char *, const char *);
+int strcoll (const char *, const char *);
+char *strcpy (char *restrict, const char *restrict);
+size_t strcspn (const char *, const char *);
+char *strerror (int);
+size_t strlen (const char *);
+char *strncat (char *restrict, const char *restrict, size_t);
+int strncmp (const char *, const char *, size_t);
+char *strncpy (char *restrict, const char *restrict, size_t);
+char *strpbrk (const char *, const char *);
+char *strrchr (const char *, int);
+size_t strspn (const char *, const char *);
+char *strstr (const char *, const char *);
+
+char *strtok (char *restrict, const char *restrict);
+
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+
+int strcoll_l (const char *, const char *, locale_t);
+char *strerror_l (int, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+
+
+int timingsafe_bcmp (const void *, const void *, size_t);
+int timingsafe_memcmp (const void *, const void *, size_t);
+
+
+void * memccpy (void *restrict, const void *restrict, int, size_t);
+# 76 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 3
+char *stpcpy (char *restrict, const char *restrict);
+char *stpncpy (char *restrict, const char *restrict, size_t);
+
+
+
+
+
+
+char *strdup (const char *) __attribute__((__malloc__)) __attribute__((__warn_unused_result__));
+
+char *_strdup_r (struct _reent *, const char *);
+
+char *strndup (const char *, size_t) __attribute__((__malloc__)) __attribute__((__warn_unused_result__));
+
+char *_strndup_r (struct _reent *, const char *, size_t);
+# 100 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 3
+int strerror_r (int, char *, size_t)
+
+             __asm__ ("" "__xpg_strerror_r")
+
+  ;
+
+
+
+
+
+
+
+char * _strerror_r (struct _reent *, int, int, int *);
+
+
+size_t strlcat (char *, const char *, size_t);
+size_t strlcpy (char *, const char *, size_t);
+
+
+size_t strnlen (const char *, size_t);
+
+
+char *strsep (char **, const char *);
+
+
+char *strnstr(const char *, const char *, size_t) __attribute__((__pure__));
+
+
+
+char *strlwr (char *);
+char *strupr (char *);
+
+
+
+char *strsignal (int __signo);
+# 175 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 3
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/string.h" 1 3
+# 15 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/sys/string.h" 3
+static __inline unsigned long __libc_detect_null(unsigned long w)
+{
+  unsigned long mask = 0x7f7f7f7f;
+  if (sizeof (long) == 8)
+    mask = ((mask << 16) << 16) | mask;
+  return ~(((w & mask) + mask) | w | mask);
+}
+# 176 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/string.h" 2 3
+
+
+# 8 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 1
+
+
+
 
 # 1 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h" 1
 # 34 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h"
@@ -1952,4 +2421,1596 @@ void task_buzzer()
             bl_gpio_output_set(1, 0);
         }
     }
+}
+# 9 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h" 1
+# 39 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h"
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/aon_reg.h" 1
+# 39 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/aon_reg.h"
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 1
+# 64 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h"
+typedef enum
+{
+# 79 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h"
+  MSOFT_IRQn =3,
+  MTIME_IRQn =7,
+  MEXT_IRQn =11,
+  CLIC_SOFT_PEND_IRQn =12,
+
+
+  BMX_ERR_IRQn = 16 +0,
+  BMX_TO_IRQn = 16 +1,
+  L1C_BMX_ERR_IRQn = 16 +2,
+  L1C_BMX_TO_IRQn = 16 +3,
+  SEC_BMX_ERR_IRQn = 16 +4,
+  RF_TOP_INT0_IRQn = 16 +5,
+  RF_TOP_INT1_IRQn = 16 +6,
+  SDIO_IRQn = 16 +7,
+  DMA_BMX_ERR_IRQn = 16 +8,
+  SEC_GMAC_IRQn = 16 +9,
+  SEC_CDET_IRQn = 16 +10,
+  SEC_PKA_IRQn = 16 +11,
+  SEC_TRNG_IRQn = 16 +12,
+  SEC_AES_IRQn = 16 +13,
+  SEC_SHA_IRQn = 16 +14,
+  DMA_ALL_IRQn = 16 +15,
+  RESERVED0 = 16 +16,
+  RESERVED1 = 16 +17,
+  RESERVED2 = 16 +18,
+  IRTX_IRQn = 16 +19,
+  IRRX_IRQn = 16 +20,
+  RESERVED3 = 16 +21,
+  RESERVED4 = 16 +22,
+  SF_CTRL_IRQn = 16 +23,
+  RESERVED5 = 16 +24,
+  GPADC_DMA_IRQn = 16 +25,
+  EFUSE_IRQn = 16 +26,
+  SPI_IRQn = 16 +27,
+  RESERVED6 = 16 +28,
+  UART0_IRQn = 16 +29,
+  UART1_IRQn = 16 +30,
+  RESERVED7 = 16 +31,
+  I2C_IRQn = 16 +32,
+  RESERVED8 = 16 +33,
+  PWM_IRQn = 16 +34,
+  RESERVED9 = 16 +35,
+  TIMER_CH0_IRQn = 16 +36,
+  TIMER_CH1_IRQn = 16 +37,
+  TIMER_WDT_IRQn = 16 +38,
+  RESERVED10 = 16 +39,
+  RESERVED11 = 16 +40,
+  RESERVED12 = 16 +41,
+  RESERVED13 = 16 +42,
+  RESERVED14 = 16 +43,
+  GPIO_INT0_IRQn = 16 +44,
+  RESERVED16 = 16 +45,
+  RESERVED17 = 16 +46,
+  RESERVED18 = 16 +47,
+  RESERVED19 = 16 +48,
+  RESERVED20 = 16 +49,
+  PDS_WAKEUP_IRQn = 16 +50,
+  HBN_OUT0_IRQn = 16 +51,
+  HBN_OUT1_IRQn = 16 +52,
+  BOR_IRQn = 16 +53,
+  WIFI_IRQn = 16 +54,
+  BZ_PHY_IRQn = 16 +55,
+  BLE_IRQn = 16 +56,
+  MAC_TXRX_TIMER_IRQn = 16 +57,
+  MAC_TXRX_MISC_IRQn = 16 +58,
+  MAC_RX_TRG_IRQn = 16 +59,
+  MAC_TX_TRG_IRQn = 16 +60,
+  MAC_GEN_IRQn = 16 +61,
+  MAC_PORT_TRG_IRQn = 16 +62,
+  WIFI_IPC_PUBLIC_IRQn = 16 +63,
+  IRQn_LAST,
+} IRQn_Type;
+# 211 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h"
+typedef enum
+{
+  BL_AHB_MASTER_CPU = 0,
+  BL_AHB_MASTER_AP2NP,
+  BL_AHB_MASTER_EMAC,
+  BL_AHB_MASTER_SEC0,
+  BL_AHB_MASTER_DMA,
+  BL_AHB_MASTER_606,
+  BL_AHB_MASTER_SEC1,
+  BL_AHB_MASTER_154,
+  BL_AHB_MASTER_CCI,
+}BL_AHB_Master_Type;
+
+typedef enum
+{
+  BL_AHB_SLAVE0_S2F = 0,
+  BL_AHB_SLAVE0_MAX,
+}BL_AHB_Slave0_Type;
+
+typedef enum
+{
+  BL_AHB_SLAVE1_GLB = 0x00,
+  BL_AHB_SLAVE1_RF = 0x01,
+  BL_AHB_SLAVE1_GPIP = 0x02,
+  BL_AHB_SLAVE1_DBG = 0x03,
+  BL_AHB_SLAVE1_SEC = 0x04,
+  BL_AHB_SLAVE1_TZ1 = 0x05,
+  BL_AHB_SLAVE1_TZ2 = 0x06,
+  BL_AHB_SLAVE1_EFUSE = 0x07,
+  BL_AHB_SLAVE1_CCI = 0x08,
+  BL_AHB_SLAVE1_L1C = 0x09,
+
+  BL_AHB_SLAVE1_SFC = 0x0B,
+  BL_AHB_SLAVE1_DMA = 0x0C,
+  BL_AHB_SLAVE1_SDU = 0x0D,
+  BL_AHB_SLAVE1_PDSHBN = 0x0E,
+  BL_AHB_SLAVE1_WRAM = 0x0F,
+
+  BL_AHB_SLAVE1_UART0 = 0x10,
+  BL_AHB_SLAVE1_UART1 = 0x11,
+  BL_AHB_SLAVE1_SPI = 0x12,
+  BL_AHB_SLAVE1_I2C = 0x13,
+  BL_AHB_SLAVE1_PWM = 0x14,
+  BL_AHB_SLAVE1_TMR = 0x15,
+  BL_AHB_SLAVE1_IRR = 0x16,
+  BL_AHB_SLAVE1_CKS =0x17,
+
+  BL_AHB_SLAVE1_MAX =0x18,
+
+}BL_AHB_Slave1_Type;
+
+typedef enum
+{
+  BL_AHB_SEC_ENG_AES0 = 0,
+  BL_AHB_SEC_ENG_AES1,
+  BL_AHB_SEC_ENG_SHA0,
+  BL_AHB_SEC_ENG_SHA1,
+}BL_AHB_Sec_Eng_Type;
+
+typedef enum
+{
+  BL_AHB_DMA0_CH0 = 0,
+  BL_AHB_DMA0_CH1,
+  BL_AHB_DMA0_CH2,
+  BL_AHB_DMA0_CH3,
+  BL_AHB_DMA0_CH4,
+}BL_AHB_DMA0_CHNL_Type;
+
+typedef enum
+{
+  BL_AHB_SLAVE2_WIFI_CFG = 0,
+  BL_AHB_SLAVE2_MAX,
+}BL_AHB_Slave2_Type;
+
+typedef enum
+{
+  BL_AHB_SLAVE3_BLE = 0,
+  BL_AHB_SLAVE3_MAX,
+}BL_AHB_Slave3_Type;
+
+typedef enum
+{
+  BL_CORE_MASTER_IBUS_CPU = 0,
+  BL_CORE_MASTER_DBUS_CPU,
+  BL_CORE_MASTER_BUS_S2F,
+  BL_CORE_MASTER_MAX,
+}BL_Core_Master_Type;
+
+typedef enum
+{
+  BL_CORE_SLAVE0_DTCM_CPU = 0,
+  BL_CORE_SLAVE0_MAX,
+}BL_Core_Slave0_Type;
+
+typedef enum
+{
+  BL_CORE_SLAVE1_XIP_CPU = 0,
+  BL_CORE_SLAVE1_ITCM_CPU,
+  BL_CORE_SLAVE1_ROM,
+  BL_CORE_SLAVE1_MAX,
+}BL_Core_Slave1_Type;
+
+typedef enum
+{
+  BL_CORE_SLAVE2_F2S = 0,
+  BL_CORE_SLAVE2_MAX,
+}BL_Core_Slave2_Type;
+
+
+
+
+
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/RISCV/Device/Bouffalo/BL602/Startup/system_bl602.h" 1
+
+
+
+
+
+
+
+extern uint32_t SystemCoreClock;
+
+extern void SystemCoreClockUpdate (void);
+extern void SystemInit (void);
+extern void System_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority);
+extern void Systick_Stop(void);
+extern void Systick_Start(void);
+# 324 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 2
+# 336 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h"
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/RISCV/Core/Include/cmsis_compatible_gcc.h" 1
+# 87 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/RISCV/Core/Include/cmsis_compatible_gcc.h"
+__attribute__( ( always_inline ) ) static inline void __enable_irq(void)
+{
+  __asm volatile ("csrsi mstatus, 8");
+}
+
+__attribute__( ( always_inline ) ) static inline void __disable_irq(void)
+{
+  __asm volatile ("csrci mstatus, 8");
+}
+
+__attribute__((always_inline)) static inline uint32_t __REV(uint32_t value)
+{
+
+    uint32_t res = 0;
+
+    res = (value << 24) | (value >> 24);
+    res &= 0xFF0000FF;
+    res |= ((value >> 8) & 0x0000FF00) | ((value << 8) & 0x00FF0000);
+
+    return res;
+}
+
+__attribute__((always_inline)) static inline uint32_t __REV16(uint32_t value)
+{
+  return __builtin_bswap16(value);
+}
+
+extern void clic_enable_interrupt (uint32_t source);
+extern void clic_disable_interrupt ( uint32_t source);
+extern void clic_set_pending(uint32_t source);
+extern void clic_clear_pending(uint32_t source);
+# 337 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/RISCV/Core/Include/clic.h" 1
+# 338 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/RISCV/Core/Include/riscv_encoding.h" 1
+# 339 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 2
+# 40 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/aon_reg.h" 2
+# 1076 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/aon_reg.h"
+struct aon_reg {
+
+    uint8_t RESERVED0x0[2048];
+
+
+    union {
+        struct {
+            uint32_t aon_resv : 8;
+            uint32_t reserved_8_11 : 4;
+            uint32_t pu_aon_dc_tbuf : 1;
+            uint32_t reserved_13_19 : 7;
+            uint32_t ldo11_rt_pulldown : 1;
+            uint32_t ldo11_rt_pulldown_sel : 1;
+            uint32_t sw_pu_ldo11_rt : 1;
+            uint32_t reserved_23_31 : 9;
+        }BF;
+        uint32_t WORD;
+    } aon;
+
+
+    union {
+        struct {
+            uint32_t tmux_aon : 3;
+            uint32_t reserved_3 : 1;
+            uint32_t ten_aon : 1;
+            uint32_t dten_xtal32k : 1;
+            uint32_t ten_xtal32k : 1;
+            uint32_t reserved_7 : 1;
+            uint32_t ten_vddcore_aon : 1;
+            uint32_t ten_ldo11soc_aon : 1;
+            uint32_t ten_dcdc18_0_aon : 1;
+            uint32_t ten_dcdc18_1_aon : 1;
+            uint32_t ten_bg_sys_aon : 1;
+            uint32_t reserved_13_15 : 3;
+            uint32_t ten_ldo15rf_aon : 1;
+            uint32_t ten_xtal_aon : 1;
+            uint32_t dten_xtal_aon : 1;
+            uint32_t ten_mbg_aon : 1;
+            uint32_t ten_cip_misc_aon : 1;
+            uint32_t reserved_21_31 : 11;
+        }BF;
+        uint32_t WORD;
+    } aon_common;
+
+
+    union {
+        struct {
+            uint32_t sw_soc_en_aon : 1;
+            uint32_t sw_wb_en_aon : 1;
+            uint32_t reserved_2_31 : 30;
+        }BF;
+        uint32_t WORD;
+    } aon_misc;
+
+
+    uint8_t RESERVED0x80c[4];
+
+
+    union {
+        struct {
+            uint32_t pmip_resv : 8;
+            uint32_t pu_bg_sys_aon : 1;
+            uint32_t reserved_9_11 : 3;
+            uint32_t bg_sys_start_ctrl_aon : 1;
+            uint32_t reserved_13_31 : 19;
+        }BF;
+        uint32_t WORD;
+    } bg_sys_top;
+
+
+    union {
+        struct {
+            uint32_t reserved_0 : 1;
+            uint32_t dcdc18_vout_sel_aon : 5;
+            uint32_t reserved_6_7 : 2;
+            uint32_t dcdc18_vpfm_aon : 4;
+            uint32_t dcdc18_osc_2m_mode_aon : 1;
+            uint32_t reserved_13_15 : 3;
+            uint32_t dcdc18_osc_freq_trim_aon : 4;
+            uint32_t dcdc18_slope_curr_sel_aon : 5;
+            uint32_t dcdc18_stop_osc_aon : 1;
+            uint32_t dcdc18_slow_osc_aon : 1;
+            uint32_t dcdc18_osc_inhibit_t2_aon : 1;
+            uint32_t dcdc18_sstart_time_aon : 2;
+            uint32_t reserved_30 : 1;
+            uint32_t dcdc18_rdy_aon : 1;
+        }BF;
+        uint32_t WORD;
+    } dcdc18_top_0;
+
+
+    union {
+        struct {
+            uint32_t dcdc18_force_cs_zvs_aon : 1;
+            uint32_t dcdc18_cs_delay_aon : 3;
+            uint32_t dcdc18_zvs_td_opt_aon : 3;
+            uint32_t reserved_7 : 1;
+            uint32_t dcdc18_nonoverlap_td_aon : 5;
+            uint32_t reserved_13_15 : 3;
+            uint32_t dcdc18_rc_sel_aon : 4;
+            uint32_t dcdc18_chf_sel_aon : 4;
+            uint32_t dcdc18_cfb_sel_aon : 4;
+            uint32_t dcdc18_en_antiring_aon : 1;
+            uint32_t dcdc18_pulldown_aon : 1;
+            uint32_t reserved_30_31 : 2;
+        }BF;
+        uint32_t WORD;
+    } dcdc18_top_1;
+
+
+    union {
+        struct {
+            uint32_t pu_ldo11soc_aon : 1;
+            uint32_t reserved_1_3 : 3;
+            uint32_t ldo11soc_sstart_sel_aon : 1;
+            uint32_t reserved_5_7 : 3;
+            uint32_t ldo11soc_sstart_delay_aon : 2;
+            uint32_t ldo11soc_pulldown_aon : 1;
+            uint32_t ldo11soc_pulldown_sel_aon : 1;
+            uint32_t ldo11soc_vth_sel_aon : 2;
+            uint32_t reserved_14_23 : 10;
+            uint32_t ldo11soc_cc_aon : 2;
+            uint32_t reserved_26_27 : 2;
+            uint32_t ldo11soc_rdy_aon : 1;
+            uint32_t ldo11soc_power_good_aon : 1;
+            uint32_t pu_vddcore_misc_aon : 1;
+            uint32_t pmip_dc_tp_out_en_aon : 1;
+        }BF;
+        uint32_t WORD;
+    } ldo11soc_and_dctest;
+
+
+    union {
+        struct {
+            uint32_t pu_ir_psw_aon : 1;
+            uint32_t reserved_1_31 : 31;
+        }BF;
+        uint32_t WORD;
+    } psw_irrcv;
+
+
+    uint8_t RESERVED0x824[92];
+
+
+    union {
+        struct {
+            uint32_t pu_mbg_aon : 1;
+            uint32_t pu_ldo15rf_aon : 1;
+            uint32_t pu_sfreg_aon : 1;
+            uint32_t reserved_3 : 1;
+            uint32_t pu_xtal_buf_aon : 1;
+            uint32_t pu_xtal_aon : 1;
+            uint32_t reserved_6_7 : 2;
+            uint32_t ldo15rf_sstart_sel_aon : 1;
+            uint32_t ldo15rf_sstart_delay_aon : 2;
+            uint32_t reserved_11 : 1;
+            uint32_t ldo15rf_pulldown_aon : 1;
+            uint32_t ldo15rf_pulldown_sel_aon : 1;
+            uint32_t reserved_14_15 : 2;
+            uint32_t ldo15rf_vout_sel_aon : 3;
+            uint32_t reserved_19_23 : 5;
+            uint32_t ldo15rf_cc_aon : 2;
+            uint32_t reserved_26_27 : 2;
+            uint32_t ldo15rf_bypass_aon : 1;
+            uint32_t reserved_29_31 : 3;
+        }BF;
+        uint32_t WORD;
+    } rf_top_aon;
+
+
+    union {
+        struct {
+            uint32_t xtal_bk_aon : 2;
+            uint32_t xtal_capcode_extra_aon : 1;
+            uint32_t xtal_ext_sel_aon : 1;
+            uint32_t xtal_buf_en_aon : 4;
+            uint32_t xtal_buf_hp_aon : 4;
+            uint32_t xtal_fast_startup_aon : 1;
+            uint32_t xtal_sleep_aon : 1;
+            uint32_t xtal_amp_ctrl_aon : 2;
+            uint32_t xtal_capcode_out_aon : 6;
+            uint32_t xtal_capcode_in_aon : 6;
+            uint32_t xtal_gm_boost_aon : 2;
+            uint32_t xtal_rdy_sel_aon : 2;
+        }BF;
+        uint32_t WORD;
+    } xtal_cfg;
+
+
+    union {
+        struct {
+            uint32_t tsen_refcode_corner : 12;
+            uint32_t reserved_12_15 : 4;
+            uint32_t tsen_refcode_rfcal : 12;
+            uint32_t xtal_rdy : 1;
+            uint32_t xtal_inn_cfg_en_aon : 1;
+            uint32_t xtal_rdy_int_sel_aon : 2;
+        }BF;
+        uint32_t WORD;
+    } tsen;
+
+
+    uint8_t RESERVED0x88c[116];
+
+
+    union {
+        struct {
+            uint32_t acomp0_en : 1;
+            uint32_t reserved_1_3 : 3;
+            uint32_t acomp0_hyst_seln : 3;
+            uint32_t acomp0_hyst_selp : 3;
+            uint32_t acomp0_bias_prog : 2;
+            uint32_t acomp0_level_sel : 6;
+            uint32_t acomp0_neg_sel : 4;
+            uint32_t acomp0_pos_sel : 4;
+            uint32_t acomp0_muxen : 1;
+            uint32_t reserved_27_31 : 5;
+        }BF;
+        uint32_t WORD;
+    } acomp0_ctrl;
+
+
+    union {
+        struct {
+            uint32_t acomp1_en : 1;
+            uint32_t reserved_1_3 : 3;
+            uint32_t acomp1_hyst_seln : 3;
+            uint32_t acomp1_hyst_selp : 3;
+            uint32_t acomp1_bias_prog : 2;
+            uint32_t acomp1_level_sel : 6;
+            uint32_t acomp1_neg_sel : 4;
+            uint32_t acomp1_pos_sel : 4;
+            uint32_t acomp1_muxen : 1;
+            uint32_t reserved_27_31 : 5;
+        }BF;
+        uint32_t WORD;
+    } acomp1_ctrl;
+
+
+    union {
+        struct {
+            uint32_t acomp1_rstn_ana : 1;
+            uint32_t acomp0_rstn_ana : 1;
+            uint32_t reserved_2_7 : 6;
+            uint32_t acomp1_test_en : 1;
+            uint32_t acomp0_test_en : 1;
+            uint32_t acomp1_test_sel : 2;
+            uint32_t acomp0_test_sel : 2;
+            uint32_t reserved_14_16 : 3;
+            uint32_t acomp1_out_raw : 1;
+            uint32_t reserved_18 : 1;
+            uint32_t acomp0_out_raw : 1;
+            uint32_t reserved_20_23 : 4;
+            uint32_t acomp_reserved : 8;
+        }BF;
+        uint32_t WORD;
+    } acomp_ctrl;
+
+
+    union {
+        struct {
+            uint32_t gpadc_global_en : 1;
+            uint32_t gpadc_conv_start : 1;
+            uint32_t gpadc_soft_rst : 1;
+            uint32_t gpadc_neg_sel : 5;
+            uint32_t gpadc_pos_sel : 5;
+            uint32_t gpadc_neg_gnd : 1;
+            uint32_t gpadc_micbias_en : 1;
+            uint32_t gpadc_micpga_en : 1;
+            uint32_t gpadc_byp_micboost : 1;
+            uint32_t reserved_17 : 1;
+            uint32_t gpadc_dwa_en : 1;
+            uint32_t gpadc_mic2_diff : 1;
+            uint32_t gpadc_mic1_diff : 1;
+            uint32_t gpadc_mic_pga2_gain : 2;
+            uint32_t gpadc_micboost_32db_en : 1;
+            uint32_t reserved_24_26 : 3;
+            uint32_t gpadc_chip_sen_pu : 1;
+            uint32_t gpadc_sen_sel : 2;
+            uint32_t gpadc_sen_test_en : 1;
+            uint32_t reserved_31 : 1;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_cmd;
+
+
+    union {
+        struct {
+            uint32_t gpadc_cal_os_en : 1;
+            uint32_t gpadc_cont_conv_en : 1;
+            uint32_t gpadc_res_sel : 3;
+            uint32_t reserved_5_16 : 12;
+            uint32_t gpadc_clk_ana_inv : 1;
+            uint32_t gpadc_clk_div_ratio : 3;
+            uint32_t gpadc_scan_length : 4;
+            uint32_t gpadc_scan_en : 1;
+            uint32_t gpadc_dither_en : 1;
+            uint32_t gpadc_v11_sel : 2;
+            uint32_t gpadc_v18_sel : 2;
+            uint32_t reserved_31 : 1;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_config1;
+
+
+    union {
+        struct {
+            uint32_t reserved_0_1 : 2;
+            uint32_t gpadc_diff_mode : 1;
+            uint32_t gpadc_vref_sel : 1;
+            uint32_t gpadc_vbat_en : 1;
+            uint32_t gpadc_tsext_sel : 1;
+            uint32_t gpadc_ts_en : 1;
+            uint32_t gpadc_pga_vcm : 2;
+            uint32_t gpadc_pga_os_cal : 4;
+            uint32_t gpadc_pga_en : 1;
+            uint32_t gpadc_pga_vcmi_en : 1;
+            uint32_t gpadc_chop_mode : 2;
+            uint32_t gpadc_bias_sel : 1;
+            uint32_t gpadc_test_en : 1;
+            uint32_t gpadc_test_sel : 3;
+            uint32_t gpadc_pga2_gain : 3;
+            uint32_t gpadc_pga1_gain : 3;
+            uint32_t gpadc_dly_sel : 3;
+            uint32_t gpadc_tsvbe_low : 1;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_config2;
+
+
+    union {
+        struct {
+            uint32_t gpadc_scan_pos_0 : 5;
+            uint32_t gpadc_scan_pos_1 : 5;
+            uint32_t gpadc_scan_pos_2 : 5;
+            uint32_t gpadc_scan_pos_3 : 5;
+            uint32_t gpadc_scan_pos_4 : 5;
+            uint32_t gpadc_scan_pos_5 : 5;
+            uint32_t reserved_30_31 : 2;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_scn_pos1;
+
+
+    union {
+        struct {
+            uint32_t gpadc_scan_pos_6 : 5;
+            uint32_t gpadc_scan_pos_7 : 5;
+            uint32_t gpadc_scan_pos_8 : 5;
+            uint32_t gpadc_scan_pos_9 : 5;
+            uint32_t gpadc_scan_pos_10 : 5;
+            uint32_t gpadc_scan_pos_11 : 5;
+            uint32_t reserved_30_31 : 2;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_scn_pos2;
+
+
+    union {
+        struct {
+            uint32_t gpadc_scan_neg_0 : 5;
+            uint32_t gpadc_scan_neg_1 : 5;
+            uint32_t gpadc_scan_neg_2 : 5;
+            uint32_t gpadc_scan_neg_3 : 5;
+            uint32_t gpadc_scan_neg_4 : 5;
+            uint32_t gpadc_scan_neg_5 : 5;
+            uint32_t reserved_30_31 : 2;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_scn_neg1;
+
+
+    union {
+        struct {
+            uint32_t gpadc_scan_neg_6 : 5;
+            uint32_t gpadc_scan_neg_7 : 5;
+            uint32_t gpadc_scan_neg_8 : 5;
+            uint32_t gpadc_scan_neg_9 : 5;
+            uint32_t gpadc_scan_neg_10 : 5;
+            uint32_t gpadc_scan_neg_11 : 5;
+            uint32_t reserved_30_31 : 2;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_scn_neg2;
+
+
+    union {
+        struct {
+            uint32_t gpadc_data_rdy : 1;
+            uint32_t reserved_1_15 : 15;
+            uint32_t gpadc_reserved : 16;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_status;
+
+
+    union {
+        struct {
+            uint32_t gpadc_neg_satur : 1;
+            uint32_t gpadc_pos_satur : 1;
+            uint32_t reserved_2_3 : 2;
+            uint32_t gpadc_neg_satur_clr : 1;
+            uint32_t gpadc_pos_satur_clr : 1;
+            uint32_t reserved_6_7 : 2;
+            uint32_t gpadc_neg_satur_mask : 1;
+            uint32_t gpadc_pos_satur_mask : 1;
+            uint32_t reserved_10_31 : 22;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_isr;
+
+
+    union {
+        struct {
+            uint32_t gpadc_data_out : 26;
+            uint32_t reserved_26_31 : 6;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_result;
+
+
+    union {
+        struct {
+            uint32_t gpadc_raw_data : 12;
+            uint32_t reserved_12_31 : 20;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_raw_result;
+
+
+    union {
+        struct {
+            uint32_t gpadc_os_cal_data : 16;
+            uint32_t reserved_16_31 : 16;
+        }BF;
+        uint32_t WORD;
+    } gpadc_reg_define;
+
+
+    union {
+        struct {
+            uint32_t hbncore_resv0_data : 32;
+        }BF;
+        uint32_t WORD;
+    } hbncore_resv0;
+
+
+    union {
+        struct {
+            uint32_t hbncore_resv1_data : 32;
+        }BF;
+        uint32_t WORD;
+    } hbncore_resv1;
+
+};
+
+typedef volatile struct aon_reg aon_reg_t;
+# 40 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/gpip_reg.h" 1
+# 210 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/gpip_reg.h"
+struct gpip_reg {
+
+    union {
+        struct {
+            uint32_t gpadc_dma_en : 1;
+            uint32_t gpadc_fifo_clr : 1;
+            uint32_t gpadc_fifo_ne : 1;
+            uint32_t gpadc_fifo_full : 1;
+            uint32_t gpadc_rdy : 1;
+            uint32_t gpadc_fifo_overrun : 1;
+            uint32_t gpadc_fifo_underrun : 1;
+            uint32_t reserved_7 : 1;
+            uint32_t gpadc_rdy_clr : 1;
+            uint32_t gpadc_fifo_overrun_clr : 1;
+            uint32_t gpadc_fifo_underrun_clr : 1;
+            uint32_t reserved_11 : 1;
+            uint32_t gpadc_rdy_mask : 1;
+            uint32_t gpadc_fifo_overrun_mask : 1;
+            uint32_t gpadc_fifo_underrun_mask : 1;
+            uint32_t reserved_15 : 1;
+            uint32_t gpadc_fifo_data_count : 6;
+            uint32_t gpadc_fifo_thl : 2;
+            uint32_t rsvd_31_24 : 8;
+        }BF;
+        uint32_t WORD;
+    } gpadc_config;
+
+
+    union {
+        struct {
+            uint32_t gpadc_dma_rdata : 26;
+            uint32_t rsvd_31_26 : 6;
+        }BF;
+        uint32_t WORD;
+    } gpadc_dma_rdata;
+
+
+    uint8_t RESERVED0x8[56];
+
+
+    union {
+        struct {
+            uint32_t gpdac_en : 1;
+            uint32_t gpdac_en2 : 1;
+            uint32_t reserved_2_3 : 2;
+            uint32_t dsm_mode : 2;
+            uint32_t reserved_6_7 : 2;
+            uint32_t gpdac_mode : 3;
+            uint32_t reserved_11_15 : 5;
+            uint32_t gpdac_ch_a_sel : 4;
+            uint32_t gpdac_ch_b_sel : 4;
+            uint32_t rsvd_31_24 : 8;
+        }BF;
+        uint32_t WORD;
+    } gpdac_config;
+
+
+    union {
+        struct {
+            uint32_t gpdac_dma_tx_en : 1;
+            uint32_t reserved_1_3 : 3;
+            uint32_t gpdac_dma_format : 2;
+            uint32_t reserved_6_31 : 26;
+        }BF;
+        uint32_t WORD;
+    } gpdac_dma_config;
+
+
+    union {
+        struct {
+            uint32_t gpdac_dma_wdata : 32;
+        }BF;
+        uint32_t WORD;
+    } gpdac_dma_wdata;
+
+
+    union {
+        struct {
+            uint32_t tx_fifo_empty : 1;
+            uint32_t tx_fifo_full : 1;
+            uint32_t tx_cs : 2;
+            uint32_t TxFifoRdPtr : 3;
+            uint32_t reserved_7 : 1;
+            uint32_t TxFifoWrPtr : 2;
+            uint32_t reserved_10_31 : 22;
+        }BF;
+        uint32_t WORD;
+    } gpdac_tx_fifo_status;
+
+};
+
+typedef volatile struct gpip_reg gpip_reg_t;
+# 41 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_common.h" 1
+
+
+
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/bl602.h" 1
+# 5 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_common.h" 2
+# 1 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Common/platform_print/bflb_platform.h" 1
+# 12 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/Common/platform_print/bflb_platform.h"
+void * pvPortMalloc( size_t xWantedSize );
+void* pvPortRealloc(void* ptr, size_t newsize);
+void* pvPortCalloc(size_t numElements, size_t sizeOfElement);
+void vPortFree( void *pv );
+
+
+
+
+
+
+void bflb_platform_init(uint32_t baudrate);
+void bflb_platform_deinit(void);
+void bflb_platform_printf(char *fmt,...);
+void bflb_platform_dump(const void *data,uint32_t len);
+void bflb_platform_prints(char *data);
+void bflb_platform_printx(uint32_t val);
+void bflb_platform_printc(char c);
+void bflb_platform_print_set(uint8_t logDisable);
+int bflb_platform_get_random(uint8_t *data,uint32_t len);
+int bflb_platform_get_input(uint8_t *data,uint32_t maxLen);
+
+void bflb_platform_clear_time(void);
+uint32_t bflb_platform_get_systick_int_cnt(void);
+uint64_t bflb_platform_get_time_ms();
+void bflb_platform_start_time(void);
+void bflb_platform_stop_time(void);
+void bflb_platform_set_alarm_time(uint64_t time);
+void bflb_platform_init_time(void);
+void bflb_platform_deinit_time(void);
+void bflb_platform_delay_ms(uint32_t time);
+uint32_t bflb_platform_get_log(uint8_t *data,uint32_t maxlen);
+# 6 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_common.h" 2
+# 22 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_common.h"
+typedef enum
+{
+  SUCCESS = 0,
+  ERROR = 1,
+  TIMEOUT = 2,
+}BL_Err_Type;
+
+
+
+
+typedef enum
+{
+  DISABLE = 0,
+  ENABLE = 1,
+}BL_Fun_Type;
+
+
+
+
+typedef enum
+{
+  RESET = 0,
+  SET = 1,
+}BL_Sts_Type;
+
+
+
+
+typedef enum
+{
+  UNMASK = 0,
+  MASK = 1
+}BL_Mask_Type;
+# 106 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_common.h"
+typedef enum
+{
+  LOGIC_LO = 0,
+  LOGIC_HI = !LOGIC_LO
+}LogicalStatus;
+
+
+
+
+typedef enum
+{
+  DEACTIVE = 0,
+  ACTIVE = !DEACTIVE
+}ActiveStatus;
+
+
+
+
+typedef void (intCallback_Type)(void);
+
+
+
+
+
+
+
+extern intCallback_Type ** intCbfArra[];
+void Install_Int_Callback(IRQn_Type intPeriph, uint32_t intType, intCallback_Type * cbFun);
+
+void ASM_Delay_Us(uint32_t core,uint32_t cnt);
+void BL602_Delay_US(uint32_t cnt);
+void BL602_Delay_MS(uint32_t cnt);
+void *BL602_MemCpy(void *dst, const void *src, uint32_t n);
+uint32_t *BL602_MemCpy4(uint32_t *dst, const uint32_t *src, uint32_t n);
+void *BL602_MemCpy_Fast(void *pdst, const void *psrc, uint32_t n);
+void* BL602_MemSet(void *s, uint8_t c, uint32_t n);
+uint32_t *BL602_MemSet4(uint32_t *dst, const uint32_t val, uint32_t n);
+int BL602_MemCmp(const void *s1, const void *s2, uint32_t n);
+# 42 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h" 2
+# 58 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h"
+typedef enum {
+    ADC_CHAN0,
+    ADC_CHAN1,
+    ADC_CHAN2,
+    ADC_CHAN3,
+    ADC_CHAN4,
+    ADC_CHAN5,
+    ADC_CHAN6,
+    ADC_CHAN7,
+    ADC_CHAN8,
+    ADC_CHAN9,
+    ADC_CHAN10,
+    ADC_CHAN11,
+    ADC_CHAN_DAC_OUTA,
+    ADC_CHAN_DAC_OUTB,
+    ADC_CHAN_TSEN_P,
+    ADC_CHAN_TSEN_N,
+    ADC_CHAN_VREF,
+    ADC_CHAN_DCTEST,
+    ADC_CHAN_VABT_HALF,
+    ADC_CHAN_SENP3,
+    ADC_CHAN_SENP2,
+    ADC_CHAN_SENP1,
+    ADC_CHAN_SENP0,
+    ADC_CHAN_GND,
+}ADC_Chan_Type;
+
+
+
+
+typedef enum {
+    ADC_V18_SEL_1P62V,
+    ADC_V18_SEL_1P72V,
+    ADC_V18_SEL_1P82V,
+    ADC_V18_SEL_1P92V,
+}ADC_V18_SEL_Type;
+
+
+
+
+typedef enum {
+    ADC_V11_SEL_1P0V,
+    ADC_V11_SEL_1P1V,
+    ADC_V11_SEL_1P18V,
+    ADC_V11_SEL_1P26V,
+}ADC_V11_SEL_Type;
+
+
+
+
+typedef enum {
+    ADC_CLK_DIV_1,
+    ADC_CLK_DIV_4,
+    ADC_CLK_DIV_8,
+    ADC_CLK_DIV_12,
+    ADC_CLK_DIV_16,
+    ADC_CLK_DIV_20,
+    ADC_CLK_DIV_24,
+    ADC_CLK_DIV_32,
+}ADC_CLK_Type;
+
+
+
+
+typedef enum {
+    ADC_DELAY_SEL_0,
+    ADC_DELAY_SEL_1,
+    ADC_DELAY_SEL_2,
+    ADC_DELAY_SEL_3,
+    ADC_DELAY_SEL_4,
+    ADC_DELAY_SEL_5,
+    ADC_DELAY_SEL_6,
+    ADC_DELAY_SEL_7,
+}ADC_DELAY_SEL_Type;
+
+
+
+
+typedef enum {
+    ADC_PGA_GAIN_NONE,
+    ADC_PGA_GAIN_1,
+    ADC_PGA_GAIN_2,
+    ADC_PGA_GAIN_4,
+    ADC_PGA_GAIN_8,
+    ADC_PGA_GAIN_16,
+    ADC_PGA_GAIN_32,
+}ADC_PGA_GAIN_Type;
+
+
+
+
+typedef enum {
+    ADC_BIAS_SEL_MAIN_BANDGAP,
+    ADC_BIAS_SEL_AON_BANDGAP,
+}ADC_BIAS_SEL_Type;
+
+
+
+
+typedef enum {
+    ADC_CHOP_MOD_ALL_OFF,
+    ADC_CHOP_MOD_AZ_ON,
+    ADC_CHOP_MOD_AZ_PGA_ON,
+    ADC_CHOP_MOD_AZ_PGA_RPC_ON,
+}ADC_CHOP_MOD_Type;
+
+
+
+
+typedef enum {
+    ADC_PGA_VCM_1V,
+    ADC_PGA_VCM_1P2V,
+    ADC_PGA_VCM_1P4V,
+    ADC_PGA_VCM_1P6V,
+}ADC_PGA_VCM_Type;
+
+
+
+
+typedef enum {
+    ADC_TSEN_MOD_INTERNAL_DIODE,
+    ADC_TSEN_MOD_EXTERNAL_DIODE,
+}ADC_TSEN_MOD_Type;
+
+
+
+
+typedef enum {
+    ADC_VREF_3P2V,
+    ADC_VREF_2V,
+}ADC_VREF_Type;
+
+
+
+
+typedef enum {
+    ADC_INPUT_SINGLE_END,
+    ADC_INPUT_DIFF,
+}ADC_SIG_INPUT_Type;
+
+
+
+
+typedef enum {
+    ADC_DATA_WIDTH_12,
+    ADC_DATA_WIDTH_14_WITH_16_AVERAGE,
+    ADC_DATA_WIDTH_16_WITH_64_AVERAGE,
+    ADC_DATA_WIDTH_16_WITH_128_AVERAGE,
+    ADC_DATA_WIDTH_16_WITH_256_AVERAGE,
+}ADC_Data_Width_Type;
+
+
+
+
+typedef enum {
+    ADC_MICBOOST_DB_16DB,
+    ADC_MICBOOST_DB_32DB,
+}ADC_MICBOOST_DB_Type;
+
+
+
+
+typedef enum {
+    ADC_PGA2_GAIN_0DB,
+    ADC_PGA2_GAIN_6DB,
+    ADC_PGA2_GAIN_N6DB,
+    ADC_PGA2_GAIN_12DB,
+}ADC_PGA2_GAIN_Type;
+
+
+
+
+typedef enum {
+    ADC_MIC_MODE_SINGLE,
+    ADC_MIC_MODE_DIFF,
+}ADC_MIC_MODE_Type;
+
+
+
+
+typedef struct {
+    ADC_MICBOOST_DB_Type micboostDb;
+    ADC_PGA2_GAIN_Type micPga2Gain;
+    ADC_MIC_MODE_Type mic1Mode;
+    ADC_MIC_MODE_Type mic2Mode;
+    BL_Fun_Type dwaEn;
+    BL_Fun_Type micboostBypassEn;
+    BL_Fun_Type micPgaEn;
+    BL_Fun_Type micBiasEn;
+}ADC_MIC_Type;
+
+
+
+
+typedef struct {
+    ADC_V18_SEL_Type v18Sel;
+    ADC_V11_SEL_Type v11Sel;
+    ADC_CLK_Type clkDiv;
+    ADC_PGA_GAIN_Type gain1;
+    ADC_PGA_GAIN_Type gain2;
+    ADC_CHOP_MOD_Type chopMode;
+    ADC_BIAS_SEL_Type biasSel;
+    ADC_PGA_VCM_Type vcm;
+    ADC_VREF_Type vref;
+    ADC_SIG_INPUT_Type inputMode;
+    ADC_Data_Width_Type resWidth;
+    BL_Fun_Type offsetCalibEn;
+    int16_t offsetCalibVal;
+}ADC_CFG_Type;
+
+
+
+
+typedef struct {
+    int8_t posChan;
+    int8_t negChan;
+    uint16_t value;
+    float volt;
+}ADC_Result_Type;
+
+
+
+
+typedef enum {
+    ADC_FIFO_THRESHOLD_1,
+    ADC_FIFO_THRESHOLD_4,
+    ADC_FIFO_THRESHOLD_8,
+    ADC_FIFO_THRESHOLD_16,
+}ADC_FIFO_Threshold_Type;
+
+
+
+
+typedef enum {
+    ADC_INT_POS_SATURATION,
+    ADC_INT_NEG_SATURATION,
+    ADC_INT_FIFO_UNDERRUN,
+    ADC_INT_FIFO_OVERRUN,
+    ADC_INT_ADC_READY,
+    ADC_INT_ALL,
+}ADC_INT_Type;
+
+
+
+
+typedef struct {
+    ADC_FIFO_Threshold_Type fifoThreshold;
+    BL_Fun_Type dmaEn;
+}ADC_FIFO_Cfg_Type;
+
+
+
+
+typedef struct {
+    BL_Fun_Type adcGainCoeffEnable;
+    uint16_t adcgainCoeffVal;
+    float coe;
+}ADC_Gain_Coeff_Type;
+# 500 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h"
+void ADC_Vbat_Enable(void);
+void ADC_Vbat_Disable(void);
+void ADC_Reset(void);
+void ADC_Enable(void);
+void ADC_Disable(void);
+void ADC_Init(ADC_CFG_Type* cfg);
+void ADC_Channel_Config(ADC_Chan_Type posCh,ADC_Chan_Type negCh,BL_Fun_Type contEn);
+void ADC_Scan_Channel_Config(ADC_Chan_Type posChList[],ADC_Chan_Type negChList[],uint8_t scanLength,BL_Fun_Type contEn);
+void ADC_Start(void);
+void ADC_Stop(void);
+void ADC_FIFO_Cfg(ADC_FIFO_Cfg_Type *fifoCfg);
+uint8_t ADC_Get_FIFO_Count(void);
+BL_Sts_Type ADC_FIFO_Is_Empty(void);
+BL_Sts_Type ADC_FIFO_Is_Full(void);
+uint32_t ADC_Read_FIFO(void);
+void ADC_Parse_Result(uint32_t *orgVal,uint32_t len,ADC_Result_Type *result);
+void ADC_IntMask(ADC_INT_Type intType, BL_Mask_Type intMask);
+void ADC_IntClr(ADC_INT_Type intType);
+BL_Sts_Type ADC_GetIntStatus(ADC_INT_Type intType);
+void ADC_Int_Callback_Install(ADC_INT_Type intType,intCallback_Type* cbFun);
+void ADC_IntMask(ADC_INT_Type intType, BL_Mask_Type intMask);
+void ADC_SET_TSVBE_LOW(void);
+void ADC_SET_TSVBE_HIGH(void);
+void ADC_Tsen_Init(ADC_TSEN_MOD_Type tsenMod);
+BL_Err_Type ADC_Mic_Init(ADC_MIC_Type * adc_mic_config);
+void ADC_MIC_Bias_Disable(void);
+void ADC_MIC_Bias_Enable(void);
+BL_Err_Type ADC_Trim_TSEN(uint16_t * tsen_offset);
+BL_Err_Type ADC_Gain_Trim(void);
+uint32_t ADC_Cal_Reg_Coeff_Value(uint32_t raw_reg);
+float TSEN_Get_Temp(uint32_t tsen_offset);
+# 10 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_adc.h" 1
+# 36 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_adc.h"
+typedef void (*bl_adc_cb_t)(int mode, uint32_t *data_ptr, uint32_t data_size);
+typedef struct adc_ctx {
+    int mode;
+    uint32_t *channel_data;
+    void *adc_lli;
+    int lli_flag;
+    uint32_t chan_init_table;
+    uint32_t data_size;
+    bl_adc_cb_t cb;
+}adc_ctx_t;
+
+int test_adc_init(void);
+int test_adc_get(int16_t *tmp);
+int test_adc_test(void);
+int bl_tsen_adc_get(int16_t *temp, uint8_t log_flag);
+
+
+int bl_adc_init(int mode, int gpio_num);
+int bl_adc_dma_init(int mode, uint32_t data_num);
+int bl_adc_start(void);
+int bl_adc_gpio_init(int gpio_num);
+int bl_adc_get_channel_by_gpio(int gpio_num);
+int bl_adc_freq_init(int mode, uint32_t freq);
+int32_t bl_adc_parse_data(uint32_t *parr, int data_size, int channel, int raw_flag);
+# 11 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_dma.h" 1
+# 33 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_dma.h"
+# 1 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h" 1
+# 36 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
+# 37 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h" 2
+
+struct utils_list_hdr
+{
+    struct utils_list_hdr *next;
+};
+
+struct utils_list
+{
+
+    struct utils_list_hdr *first;
+
+    struct utils_list_hdr *last;
+};
+# 62 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_init(struct utils_list *list);
+# 75 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_pool_init(struct utils_list *list, void *pool, size_t elmt_size, unsigned int elmt_cnt, void *default_value);
+# 85 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_push_back(struct utils_list *list,
+                       struct utils_list_hdr *list_hdr);
+# 96 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_push_front(struct utils_list *list, struct utils_list_hdr *list_hdr);
+# 106 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+struct utils_list_hdr *utils_list_pop_front(struct utils_list *list);
+# 119 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_extract(struct utils_list *list, struct utils_list_hdr *list_hdr);
+# 131 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+int utils_list_find(struct utils_list *list, struct utils_list_hdr *list_hdr);
+# 148 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_insert(struct utils_list * const list, struct utils_list_hdr * const element,
+        int (*cmp)(struct utils_list_hdr const *elementA,
+        struct utils_list_hdr const *elementB));
+# 166 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_insert_after(struct utils_list * const list, struct utils_list_hdr * const prev_element, struct utils_list_hdr * const element);
+# 182 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_insert_before(struct utils_list * const list, struct utils_list_hdr * const next_element, struct utils_list_hdr * const element);
+# 194 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_concat(struct utils_list *list1, struct utils_list *list2);
+# 210 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+void utils_list_remove(struct utils_list *list, struct utils_list_hdr *prev_element, struct utils_list_hdr *element);
+# 220 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+static inline int utils_list_is_empty(const struct utils_list *const list)
+{
+    return (
+# 222 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h" 3 4
+           ((void *)0) 
+# 222 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+                == list->first);
+}
+# 234 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+unsigned int utils_list_cnt(const struct utils_list *const list);
+# 245 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+static inline struct utils_list_hdr *utils_list_pick(const struct utils_list *const list)
+{
+    return list->first;
+}
+
+static inline struct utils_list_hdr *utils_list_pick_last(const struct utils_list *const list)
+{
+    return list->last;
+}
+
+static inline struct utils_list_hdr *utils_list_next(const struct utils_list_hdr *const list_hdr)
+{
+    return list_hdr->next;
+}
+# 280 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+typedef struct utils_dlist_s {
+    struct utils_dlist_s *prev;
+    struct utils_dlist_s *next;
+} utils_dlist_t;
+
+static inline void __utils_dlist_add(utils_dlist_t *node, utils_dlist_t *prev, utils_dlist_t *next)
+{
+    node->next = next;
+    node->prev = prev;
+
+    prev->next = node;
+    next->prev = node;
+}
+# 305 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+static inline void utils_dlist_add(utils_dlist_t *node, utils_dlist_t *queue)
+{
+    __utils_dlist_add(node, queue, queue->next);
+}
+
+static inline void utils_dlist_add_tail(utils_dlist_t *node, utils_dlist_t *queue)
+{
+    __utils_dlist_add(node, queue->prev, queue);
+}
+
+static inline void utils_dlist_del(utils_dlist_t *node)
+{
+    utils_dlist_t *prev = node->prev;
+    utils_dlist_t *next = node->next;
+
+    prev->next = next;
+    next->prev = prev;
+}
+
+static inline void utils_dlist_init(utils_dlist_t *node)
+{
+    node->next = node->prev = node;
+}
+
+static inline void INIT_UTILS_DLIST_HEAD(utils_dlist_t *list)
+{
+    list->next = list;
+    list->prev = list;
+}
+
+static inline int utils_dlist_empty(const utils_dlist_t *head)
+{
+    return head->next == head;
+}
+# 434 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+static inline int utils_dlist_entry_number(utils_dlist_t *queue)
+{
+    int num;
+    utils_dlist_t *cur = queue;
+    for (num=0;cur->next != queue;cur=cur->next, num++)
+        ;
+
+    return num;
+}
+# 462 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+typedef struct utils_slist_s {
+    struct utils_slist_s *next;
+} utils_slist_t;
+
+static inline void utils_slist_add(utils_slist_t *node, utils_slist_t *head)
+{
+    node->next = head->next;
+    head->next = node;
+}
+
+static inline void utils_slist_add_tail(utils_slist_t *node, utils_slist_t *head)
+{
+    while (head->next) {
+        head = head->next;
+    }
+
+    utils_slist_add(node, head);
+}
+
+static inline void utils_slist_del(utils_slist_t *node, utils_slist_t *head)
+{
+    while (head->next) {
+        if (head->next == node) {
+            head->next = node->next;
+            break;
+        }
+
+        head = head->next;
+    }
+}
+
+static inline int utils_slist_empty(const utils_slist_t *head)
+{
+    return !head->next;
+}
+
+static inline void utils_slist_init(utils_slist_t *head)
+{
+    head->next = 0;
+}
+# 571 "/home/parag/bl_iot_sdk/components/utils/include/utils_list.h"
+static inline int utils_slist_entry_number(utils_slist_t *queue)
+{
+    int num;
+    utils_slist_t *cur = queue;
+    for (num=0;cur->next;cur=cur->next, num++)
+        ;
+
+    return num;
+}
+# 34 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_dma.h" 2
+# 57 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_dma.h"
+struct bl_dma_item {
+    struct utils_list_hdr item;
+    void (*cb)(void *arg);
+    void *arg;
+
+    uint32_t src;
+    uint32_t dst;
+    uint32_t next;
+    uint32_t ctrl;
+};
+
+
+void bl_dma_copy(struct bl_dma_item *item);
+void bl_dma_init(void);
+void bl_dma_test(void);
+int bl_dma_int_clear(int ch);
+void bl_dma_update_memsrc(uint8_t ch, uint32_t src, uint32_t len);
+void bl_dma_update_memdst(uint8_t ch, uint32_t dst, uint32_t len);
+int bl_dma_irq_register(int channel, void *tc_handler, void *interr_handler, void *ctx);
+int bl_dma_irq_unregister(int channel);
+void *bl_dma_find_node_by_channel(int channel);
+void *bl_dma_find_ctx_by_channel(int channel);
+void *bl_dma_mem_malloc(uint32_t size);
+void bl_dma_mem_free(void *ptr);
+# 12 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/color.h" 1
+# 13 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 2
+# 22 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+double sensor_volt = 0;
+double ppm = 1;
+
+void init_adc(uint8_t pin);
+uint32_t read_adc();
+
+void task_mq4(void *pvParameters)
+{
+  printf("MQ4 task started\r\n");
+
+  init_adc(14);
+
+  printf("MQ4 Sensor initialized\r\n");
+
+  vTaskDelay(2000 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
+
+  while (1)
+  {
+    uint32_t adcValue = read_adc();
+
+    double sensorValue = (double)adcValue / 500.0;
+
+    double sensor_volt = sensorValue * (5.0 / 1023.0);
+
+
+
+
+
+
+    if (sensor_volt != 0.0)
+    {
+      double m = -0.318;
+      double b = 1.133;
+      double R0 = 11.80;
+      double RS_gas = ((5.0 * 1.0) / sensor_volt) - 1.0;
+      double ratio = RS_gas / R0;
+      double ppm_log = (log10(ratio) - b) / m;
+      ppm = pow(10, ppm_log);
+
+      printf("\x1B[35m" "Gas ppm = %f\r\n", ppm);
+
+    }
+    vTaskDelay(5000 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
+    printf("\e[1;1H\e[2J");
+  }
+
+  vTaskDelete(
+# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+             ((void *)0)
+# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+                 );
+}
+
+static int set_adc_gain(uint32_t gain1, uint32_t gain2)
+{
+  uint32_t reg = (*((volatile uint32_t*)(((uint32_t)0x4000F000)+(0x914))));
+
+  reg = ( ((reg)&(~(((1U<<(3U))-1)<<(25U)))) | ((uint32_t)(gain1)<<(25U)) );
+  reg = ( ((reg)&(~(((1U<<(3U))-1)<<(22U)))) | ((uint32_t)(gain2)<<(22U)) );
+
+  if (gain1 != ADC_PGA_GAIN_NONE || gain2 != ADC_PGA_GAIN_NONE)
+  {
+    reg = ( ((reg)&(~(((1U<<(2U))-1)<<(15U)))) | ((uint32_t)(2)<<(15U)) );
+  }
+  else
+  {
+    reg = ( ((reg)&(~(((1U<<(2U))-1)<<(15U)))) | ((uint32_t)(1)<<(15U)) );
+  }
+
+  reg = ( (reg) & (~(((1U<<(1U))-1)<<(14U))) );
+  if (gain1 != ADC_PGA_GAIN_NONE || gain2 != ADC_PGA_GAIN_NONE)
+  {
+    reg = ( (reg) |(1U<<(13U)));
+  }
+  else
+  {
+    reg = ( (reg) & (~(((1U<<(1U))-1)<<(13U))) );
+  }
+
+  ((*(volatile uint32_t*)(((uint32_t)0x4000F000)+(0x914)))=(reg));
+  return 0;
+}
+
+void init_adc(uint8_t pin)
+{
+  switch (pin)
+  {
+
+  case 14:
+    break;
+
+  default:
+    printf("Invalid pin selected for ADC\r\n");
+    return;
+  }
+
+  bl_adc_freq_init(1, 4096);
+
+  bl_adc_init(1, pin);
+
+  set_adc_gain(ADC_PGA_GAIN_1, ADC_PGA_GAIN_1);
+
+  bl_adc_dma_init(1, 1024);
+
+  bl_adc_gpio_init(pin);
+
+  int channel = bl_adc_get_channel_by_gpio(pin);
+  adc_ctx_t *ctx = bl_dma_find_ctx_by_channel(1);
+  ctx->chan_init_table |= (1 << channel);
+
+  bl_adc_start();
+}
+
+uint32_t read_adc()
+{
+  static uint32_t adc_data[1024];
+
+  adc_ctx_t *ctx = bl_dma_find_ctx_by_channel(1);
+
+  if (ctx->channel_data == 
+# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+                          ((void *)0)
+# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+                              )
+  {
+    return 0;
+  }
+
+  memcpy(
+      (uint8_t *)adc_data,
+      (uint8_t *)(ctx->channel_data),
+      sizeof(adc_data));
+
+  uint32_t sum = 0;
+  for (int i = 0; i < 1024; i++)
+  {
+    uint32_t scaled = ((adc_data[i] & 0xFFFF) * 32000) >> 16;
+    sum += scaled;
+  }
+
+  return sum / 1024;
 }

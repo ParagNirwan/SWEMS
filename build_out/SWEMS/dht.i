@@ -1,8 +1,8 @@
-# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c"
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
 # 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/build_out/SWEMS//"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c"
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h" 1
 # 34 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/FreeRTOS.h"
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
@@ -316,7 +316,7 @@ typedef struct xSTATIC_STREAM_BUFFER
 
 
 typedef StaticStreamBuffer_t StaticMessageBuffer_t;
-# 2 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 2 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h" 1
 # 36 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h"
 # 1 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/list.h" 1
@@ -636,7 +636,7 @@ TaskHandle_t pvTaskIncrementMutexHeldCount( void ) ;
 
 
 void vTaskInternalSetTimeOutState( TimeOut_t * const pxTimeOut ) ;
-# 3 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 3 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 1 3
 # 29 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 3
 # 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/_ansi.h" 1 3
@@ -1897,11 +1897,16 @@ _putchar_unlocked(int _c)
 }
 # 797 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdio.h" 3
 
-# 4 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
+# 4 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
+# 1 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_timer.h" 1
+# 33 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_timer.h"
 
+# 33 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_timer.h"
+uint32_t bl_timer_now_us(void);
+void bl_timer_delay_us(uint32_t us);
+uint64_t bl_timer_now_us64(void);
+# 5 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
 # 1 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h" 1
-# 34 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h"
-
 # 34 "/home/parag/bl_iot_sdk/components/hal_drv/bl602_hal/bl_gpio.h"
 typedef struct _gpio_ctx_desc {
     struct _gpio_ctx_desc *next;
@@ -1922,34 +1927,380 @@ int bl_gpio_int_clear(uint8_t gpioPin,uint8_t intClear);
 void bl_gpio_intmask(uint8_t gpiopin, uint8_t mask);
 void bl_set_gpio_intmod(uint8_t gpioPin, uint8_t intCtrlMod, uint8_t intTrgMod);
 void bl_gpio_register(gpio_ctx_t *pstnode);
-# 6 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c" 2
-# 19 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/buzzer.c"
-extern int buzz;
-extern uint16_t humidity;
-extern int16_t temp;
-extern double ppm;
-void task_buzzer()
+# 6 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
+# 1 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/color.h" 1
+# 7 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 1 3
+# 10 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/machine/ieeefp.h" 1 3
+# 11 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 2 3
+
+
+
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h" 1 3 4
+# 17 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 2 3
+
+
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/machine/stdlib.h" 1 3
+# 21 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 2 3
+
+# 1 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/alloca.h" 1 3
+# 23 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 2 3
+# 33 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+
+
+
+# 35 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+typedef struct
 {
+  int quot;
+  int rem;
+} div_t;
 
-    bl_gpio_enable_output(1, 0, 0);
-    bl_gpio_output_set(1, 0);
+typedef struct
+{
+  long quot;
+  long rem;
+} ldiv_t;
 
-    while (1)
+
+typedef struct
+{
+  long long int quot;
+  long long int rem;
+} lldiv_t;
+
+
+
+
+typedef int (*__compar_fn_t) (const void *, const void *);
+
+
+
+
+
+
+
+int __locale_mb_cur_max (void);
+
+
+
+void abort (void) __attribute__ ((__noreturn__));
+int abs (int);
+
+__uint32_t arc4random (void);
+__uint32_t arc4random_uniform (__uint32_t);
+void arc4random_buf (void *, size_t);
+
+int atexit (void (*__func)(void));
+double atof (const char *__nptr);
+
+float atoff (const char *__nptr);
+
+int atoi (const char *__nptr);
+int _atoi_r (struct _reent *, const char *__nptr);
+long atol (const char *__nptr);
+long _atol_r (struct _reent *, const char *__nptr);
+void * bsearch (const void *__key,
+         const void *__base,
+         size_t __nmemb,
+         size_t __size,
+         __compar_fn_t _compar);
+void *calloc(size_t, size_t) __attribute__((__malloc__)) __attribute__((__warn_unused_result__))
+      __attribute__((__alloc_size__(1, 2))) ;
+div_t div (int __numer, int __denom);
+void exit (int __status) __attribute__ ((__noreturn__));
+void free (void *) ;
+char * getenv (const char *__string);
+char * _getenv_r (struct _reent *, const char *__string);
+
+
+
+char * _findenv (const char *, int *);
+char * _findenv_r (struct _reent *, const char *, int *);
+
+extern char *suboptarg;
+int getsubopt (char **, char * const *, char **);
+
+long labs (long);
+ldiv_t ldiv (long __numer, long __denom);
+void *malloc(size_t) __attribute__((__malloc__)) __attribute__((__warn_unused_result__)) __attribute__((__alloc_size__(1))) ;
+int mblen (const char *, size_t);
+int _mblen_r (struct _reent *, const char *, size_t, _mbstate_t *);
+int mbtowc (wchar_t *restrict, const char *restrict, size_t);
+int _mbtowc_r (struct _reent *, wchar_t *restrict, const char *restrict, size_t, _mbstate_t *);
+int wctomb (char *, wchar_t);
+int _wctomb_r (struct _reent *, char *, wchar_t, _mbstate_t *);
+size_t mbstowcs (wchar_t *restrict, const char *restrict, size_t);
+size_t _mbstowcs_r (struct _reent *, wchar_t *restrict, const char *restrict, size_t, _mbstate_t *);
+size_t wcstombs (char *restrict, const wchar_t *restrict, size_t);
+size_t _wcstombs_r (struct _reent *, char *restrict, const wchar_t *restrict, size_t, _mbstate_t *);
+
+
+char * mkdtemp (char *);
+
+
+
+
+
+
+int mkstemp (char *);
+
+
+int mkstemps (char *, int);
+
+
+char * mktemp (char *) __attribute__ ((__deprecated__("the use of `mktemp' is dangerous; use `mkstemp' instead")));
+
+
+char * _mkdtemp_r (struct _reent *, char *);
+int _mkostemp_r (struct _reent *, char *, int);
+int _mkostemps_r (struct _reent *, char *, int, int);
+int _mkstemp_r (struct _reent *, char *);
+int _mkstemps_r (struct _reent *, char *, int);
+char * _mktemp_r (struct _reent *, char *) __attribute__ ((__deprecated__("the use of `mktemp' is dangerous; use `mkstemp' instead")));
+void qsort (void *__base, size_t __nmemb, size_t __size, __compar_fn_t _compar);
+int rand (void);
+void *realloc(void *, size_t) __attribute__((__warn_unused_result__)) __attribute__((__alloc_size__(2))) ;
+
+void *reallocarray(void *, size_t, size_t) __attribute__((__warn_unused_result__)) __attribute__((__alloc_size__(2, 3)));
+void *reallocf(void *, size_t) __attribute__((__warn_unused_result__)) __attribute__((__alloc_size__(2)));
+
+
+char * realpath (const char *restrict path, char *restrict resolved_path);
+
+
+int rpmatch (const char *response);
+
+
+
+
+void srand (unsigned __seed);
+double strtod (const char *restrict __n, char **restrict __end_PTR);
+double _strtod_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR);
+
+float strtof (const char *restrict __n, char **restrict __end_PTR);
+
+
+
+
+
+
+
+long strtol (const char *restrict __n, char **restrict __end_PTR, int __base);
+long _strtol_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
+unsigned long strtoul (const char *restrict __n, char **restrict __end_PTR, int __base);
+unsigned long _strtoul_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
+# 191 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+int system (const char *__string);
+
+
+long a64l (const char *__input);
+char * l64a (long __input);
+char * _l64a_r (struct _reent *,long __input);
+
+
+int on_exit (void (*__func)(int, void *),void *__arg);
+
+
+void _Exit (int __status) __attribute__ ((__noreturn__));
+
+
+int putenv (char *__string);
+
+int _putenv_r (struct _reent *, char *__string);
+void * _reallocf_r (struct _reent *, void *, size_t);
+
+int setenv (const char *__string, const char *__value, int __overwrite);
+
+int _setenv_r (struct _reent *, const char *__string, const char *__value, int __overwrite);
+# 224 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+char * __itoa (int, char *, int);
+char * __utoa (unsigned, char *, int);
+
+char * itoa (int, char *, int);
+char * utoa (unsigned, char *, int);
+
+
+int rand_r (unsigned *__seed);
+
+
+
+double drand48 (void);
+double _drand48_r (struct _reent *);
+double erand48 (unsigned short [3]);
+double _erand48_r (struct _reent *, unsigned short [3]);
+long jrand48 (unsigned short [3]);
+long _jrand48_r (struct _reent *, unsigned short [3]);
+void lcong48 (unsigned short [7]);
+void _lcong48_r (struct _reent *, unsigned short [7]);
+long lrand48 (void);
+long _lrand48_r (struct _reent *);
+long mrand48 (void);
+long _mrand48_r (struct _reent *);
+long nrand48 (unsigned short [3]);
+long _nrand48_r (struct _reent *, unsigned short [3]);
+unsigned short *
+       seed48 (unsigned short [3]);
+unsigned short *
+       _seed48_r (struct _reent *, unsigned short [3]);
+void srand48 (long);
+void _srand48_r (struct _reent *, long);
+
+
+char * initstate (unsigned, char *, size_t);
+long random (void);
+char * setstate (char *);
+void srandom (unsigned);
+
+
+long long atoll (const char *__nptr);
+
+long long _atoll_r (struct _reent *, const char *__nptr);
+
+long long llabs (long long);
+lldiv_t lldiv (long long __numer, long long __denom);
+long long strtoll (const char *restrict __n, char **restrict __end_PTR, int __base);
+
+long long _strtoll_r (struct _reent *, const char *restrict __n, char **restrict __end_PTR, int __base);
+
+unsigned long long strtoull (const char *restrict __n, char **restrict __end_PTR, int __base);
+
+unsigned long long _strtoull_r (struct _reent *, const char *restrict __n, char **restrict __end_PTR, int __base);
+
+
+
+void cfree (void *);
+
+
+int unsetenv (const char *__string);
+
+int _unsetenv_r (struct _reent *, const char *__string);
+
+
+
+int posix_memalign (void **, size_t, size_t) __attribute__((__nonnull__ (1)))
+     __attribute__((__warn_unused_result__));
+
+
+char * _dtoa_r (struct _reent *, double, int, int, int *, int*, char**);
+
+void * _malloc_r (struct _reent *, size_t) ;
+void * _calloc_r (struct _reent *, size_t, size_t) ;
+void _free_r (struct _reent *, void *) ;
+void * _realloc_r (struct _reent *, void *, size_t) ;
+void _mstats_r (struct _reent *, char *);
+
+int _system_r (struct _reent *, const char *);
+
+void __eprintf (const char *, const char *, unsigned int, const char *);
+# 312 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+void qsort_r (void *__base, size_t __nmemb, size_t __size, void *__thunk, int (*_compar)(void *, const void *, const void *))
+             __asm__ ("" "__bsd_qsort_r");
+# 322 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+extern long double _strtold_r (struct _reent *, const char *restrict, char **restrict);
+
+extern long double strtold (const char *restrict, char **restrict);
+# 339 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/riscv64-unknown-elf/include/stdlib.h" 3
+
+# 8 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 2
+
+
+
+
+
+
+
+
+# 15 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
+uint16_t humidity;
+int16_t temp;
+extern int buzz;
+void initiateGPIO()
+{
+  bl_gpio_enable_output(05, 0, 0);
+}
+void sendStartSignal()
+{
+  bl_gpio_output_set(05, 0);
+  vTaskDelay(1 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
+
+  bl_gpio_output_set(05, 1);
+  bl_timer_delay_us(30);
+}
+
+void task_dht(void *pvParameters)
+{
+  printf("DHT22 task started\r\n");
+  while (1)
+  {
+    initiateGPIO();
+    uint8_t data[5] = {0};
+    sendStartSignal();
+
+    bl_gpio_enable_input(05, 0, 0);
+
+    while (bl_gpio_input_get_value(05) == 1)
+      ;
+    while (bl_gpio_input_get_value(05) == 0)
+      ;
+    while (bl_gpio_input_get_value(05) == 1)
+      ;
+
+    for (int i = 0; i < 40; i++)
     {
-        if (ppm >= 40 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 80)
-        {
+      while (bl_gpio_input_get_value(05) == 0)
+        ;
 
+      bl_timer_delay_us(30);
 
-            bl_gpio_output_set(1, 1);
-            vTaskDelay(200);
+      if (bl_gpio_input_get_value(05))
+      {
+        data[i / 8] |= (1 << (7 - (i % 8)));
+      }
 
-
-            bl_gpio_output_set(1, 0);
-            vTaskDelay(100);
-        }
-        else
-        {
-            bl_gpio_output_set(1, 0);
-        }
+      while (bl_gpio_input_get_value(05) == 1)
+        ;
     }
+    humidity = (data[0] << 8 | data[1]);
+    temp = (data[2] << 8 | data[3]);
+    uint8_t checksum = data[4];
+
+
+
+    if ((data[0] + data[1] + data[2] + data[3]) == checksum)
+    {
+
+      if (temp & 0x8000)
+      {
+        temp = -temp;
+        printf("\x1B[31m" "Temperature: %d.%d *C\r\n", temp / 10, abs(temp % 10));
+      }
+      else
+      {
+        printf("\x1B[36m" "Temperature: %d.%d *C\r\n", temp / 10, temp % 10);
+      }
+
+      printf("\x1B[33m" "Humidity: %d.%d \r\n", humidity / 10, humidity % 10);
+      printf("\x1B[0m");
+    }
+    else
+    {
+      printf("\x1B[36m" "Temperature: %d.%d *C\r\n", temp / 10, temp % 10);
+      printf("\x1B[33m" "Humidity: %d.%d \r\n", humidity / 10, humidity % 10);
+      printf("\x1B[0m");
+    }
+
+    vTaskDelay(5000 / ((TickType_t)1000 / ((TickType_t)1000)));
+    printf("\e[1;1H\e[2J");
+  }
+
+  vTaskDelete(
+# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 3 4
+             ((void *)0)
+# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
+                 );
 }
