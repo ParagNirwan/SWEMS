@@ -3880,11 +3880,8 @@ uint32_t read_adc();
 
 void task_mq4(void *pvParameters)
 {
-  printf("MQ4 task started\r\n");
 
   init_adc(14);
-
-  printf("MQ4 Sensor initialized\r\n");
 
   vTaskDelay(2000 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
 
@@ -3918,9 +3915,9 @@ void task_mq4(void *pvParameters)
   }
 
   vTaskDelete(
-# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 64 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
              ((void *)0)
-# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 64 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                  );
 }
 
@@ -3991,9 +3988,9 @@ uint32_t read_adc()
   adc_ctx_t *ctx = bl_dma_find_ctx_by_channel(1);
 
   if (ctx->channel_data == 
-# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 133 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
                           ((void *)0)
-# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 133 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                               )
   {
     return 0;

@@ -78,15 +78,8 @@ task_dht:
 	.loc 1 32 1 is_stmt 1
 	.cfi_startproc
 .LVL5:
-	.loc 1 33 3
-	lui	a0,%hi(.LC0)
-.LVL6:
-	.loc 1 32 1 is_stmt 0
 	addi	sp,sp,-64
 	.cfi_def_cfa_offset 64
-	.loc 1 33 3
-	addi	a0,a0,%lo(.LC0)
-	.loc 1 32 1
 	sw	s1,52(sp)
 	sw	s2,48(sp)
 	sw	s3,44(sp)
@@ -108,50 +101,46 @@ task_dht:
 	.cfi_offset 8, -8
 	.cfi_offset 24, -40
 .LBB2:
-	.loc 1 42 11
+	.loc 1 42 11 is_stmt 0
 	li	s1,1
-.LBE2:
-	.loc 1 33 3
-	call	printf
-.LVL7:
-.LBB4:
 	.loc 1 64 14
 	lui	s2,%hi(humidity)
 	.loc 1 65 10
 	lui	s3,%hi(temp)
-	lui	s4,%hi(.LC3)
-	lui	s5,%hi(.LC4)
+	lui	s4,%hi(.LC2)
+	lui	s5,%hi(.LC3)
 	.loc 1 88 7
-	lui	s6,%hi(.LC2)
+	lui	s6,%hi(.LC1)
 	.loc 1 76 9
-	lui	s7,%hi(.LC1)
+	lui	s7,%hi(.LC0)
+.LVL6:
 .L16:
-.LBE4:
+.LBE2:
 	.loc 1 34 3 is_stmt 1
-.LBB5:
+.LBB4:
 	.loc 1 36 5
 	call	initiateGPIO
-.LVL8:
+.LVL7:
 	.loc 1 37 5
 	.loc 1 37 13 is_stmt 0
 	sw	zero,8(sp)
 	sb	zero,12(sp)
 	.loc 1 38 5 is_stmt 1
 	call	sendStartSignal
-.LVL9:
+.LVL8:
 	.loc 1 40 5
 	li	a2,0
 	li	a1,0
 	li	a0,5
 	call	bl_gpio_enable_input
-.LVL10:
+.LVL9:
 	.loc 1 42 5
 .L5:
 	.loc 1 43 7 discriminator 1
 	.loc 1 42 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL11:
+.LVL10:
 	.loc 1 42 11 discriminator 1
 	beq	a0,s1,.L5
 .L6:
@@ -159,7 +148,7 @@ task_dht:
 	.loc 1 44 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL12:
+.LVL11:
 	.loc 1 44 11 discriminator 1
 	beq	a0,zero,.L6
 .L7:
@@ -167,7 +156,7 @@ task_dht:
 	.loc 1 46 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL13:
+.LVL12:
 	.loc 1 46 11 discriminator 1
 	beq	a0,s1,.L7
 .LBB3:
@@ -180,18 +169,18 @@ task_dht:
 	.loc 1 51 14 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL14:
+.LVL13:
 	.loc 1 51 13 discriminator 1
 	beq	a0,zero,.L8
 	.loc 1 54 7 is_stmt 1
 	li	a0,30
 	call	bl_timer_delay_us
-.LVL15:
+.LVL14:
 	.loc 1 56 7
 	.loc 1 56 11 is_stmt 0
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL16:
+.LVL15:
 	.loc 1 56 10
 	beq	a0,zero,.L10
 	.loc 1 58 9 is_stmt 1
@@ -214,12 +203,12 @@ task_dht:
 	.loc 1 61 14 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL17:
+.LVL16:
 	.loc 1 61 13 discriminator 1
 	beq	a0,s1,.L10
 	.loc 1 49 30 discriminator 2
 	addi	s8,s8,1
-.LVL18:
+.LVL17:
 	.loc 1 49 5 discriminator 2
 	bne	s8,s0,.L8
 .LBE3:
@@ -258,7 +247,7 @@ task_dht:
 	.loc 1 65 10
 	sh	a1,%lo(temp)(s3)
 	.loc 1 66 5 is_stmt 1
-.LVL19:
+.LVL18:
 	.loc 1 70 5
 	.loc 1 70 8 is_stmt 0
 	bne	a5,a4,.L12
@@ -272,20 +261,20 @@ task_dht:
 	srai	s0,s0,16
 	.loc 1 76 9
 	li	s8,10
-.LVL20:
+.LVL19:
 	rem	a0,s0,s8
 	.loc 1 75 14
 	sh	s0,%lo(temp)(s3)
 	.loc 1 76 9 is_stmt 1
 	call	abs
-.LVL21:
+.LVL20:
 	div	a1,s0,s8
 	mv	a2,a0
-	addi	a0,s7,%lo(.LC1)
+	addi	a0,s7,%lo(.LC0)
 .L29:
 	.loc 1 80 9 is_stmt 0
 	call	printf
-.LVL22:
+.LVL21:
 	.loc 1 83 7 is_stmt 1
 	lhu	a1,%lo(humidity)(s2)
 	li	a5,10
@@ -293,44 +282,44 @@ task_dht:
 	divu	a1,a1,a5
 .L30:
 	.loc 1 89 7 is_stmt 0
-	addi	a0,s4,%lo(.LC3)
+	addi	a0,s4,%lo(.LC2)
+	call	printf
+.LVL22:
+	.loc 1 90 7 is_stmt 1
+	addi	a0,s5,%lo(.LC3)
 	call	printf
 .LVL23:
-	.loc 1 90 7 is_stmt 1
-	addi	a0,s5,%lo(.LC4)
-	call	printf
-.LVL24:
 	.loc 1 93 5
 	li	a0,8192
 	addi	a0,a0,1808
 	call	vTaskDelay
-.LVL25:
-.LBE5:
+.LVL24:
+.LBE4:
 	.loc 1 35 3 is_stmt 0
 	j	.L16
-.LVL26:
+.LVL25:
 .L13:
-.LBB6:
+.LBB5:
 	.loc 1 80 9 is_stmt 1
 	li	a5,10
 	rem	a2,a1,a5
-	addi	a0,s6,%lo(.LC2)
+	addi	a0,s6,%lo(.LC1)
 	div	a1,a1,a5
 	j	.L29
 .L12:
 	.loc 1 88 7
 	li	s0,10
 	rem	a2,a1,s0
-	addi	a0,s6,%lo(.LC2)
+	addi	a0,s6,%lo(.LC1)
 	div	a1,a1,s0
 	call	printf
-.LVL27:
+.LVL26:
 	.loc 1 89 7
 	lhu	a1,%lo(humidity)(s2)
 	remu	a2,a1,s0
 	divu	a1,a1,s0
 	j	.L30
-.LBE6:
+.LBE5:
 	.cfi_endproc
 .LFE6:
 	.size	task_dht, .-task_dht
@@ -339,17 +328,14 @@ task_dht:
 	.section	.rodata.task_dht.str1.4,"aMS",@progbits,1
 	.align	2
 .LC0:
-	.string	"DHT22 task started\r\n"
-	.zero	3
-.LC1:
 	.string	"\033[31mTemperature: %d.%d *C\r\n"
 	.zero	3
-.LC2:
+.LC1:
 	.string	"\033[36mTemperature: %d.%d *C\r\n"
 	.zero	3
-.LC3:
+.LC2:
 	.string	"\033[33mHumidity: %d.%d \r\n"
-.LC4:
+.LC3:
 	.string	"\033[0m"
 	.text
 .Letext0:
@@ -366,7 +352,7 @@ task_dht:
 	.file 12 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0xc9b
+	.4byte	0xc84
 	.2byte	0x4
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -375,7 +361,7 @@ task_dht:
 	.byte	0xc
 	.4byte	.LASF143
 	.4byte	.LASF144
-	.4byte	.Ldebug_ranges0+0x28
+	.4byte	.Ldebug_ranges0+0x20
 	.4byte	0
 	.4byte	.Ldebug_line0
 	.byte	0x2
@@ -1621,7 +1607,7 @@ task_dht:
 	.4byte	.LFE6-.LFB6
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xb94
+	.4byte	0xb7d
 	.byte	0x23
 	.4byte	.LASF147
 	.byte	0x1
@@ -1631,13 +1617,12 @@ task_dht:
 	.4byte	.LLST0
 	.byte	0x24
 	.4byte	.Ldebug_ranges0+0
-	.4byte	0xb80
 	.byte	0x25
 	.4byte	.LASF131
 	.byte	0x1
 	.byte	0x25
 	.byte	0xd
-	.4byte	0xb94
+	.4byte	0xb7d
 	.byte	0x2
 	.byte	0x91
 	.byte	0x48
@@ -1653,7 +1638,7 @@ task_dht:
 	.byte	0x26
 	.4byte	.LBB3
 	.4byte	.LBE3-.LBB3
-	.4byte	0xa5b
+	.4byte	0xa57
 	.byte	0x27
 	.string	"i"
 	.byte	0x1
@@ -1662,9 +1647,9 @@ task_dht:
 	.4byte	0x25
 	.4byte	.LLST1
 	.byte	0x28
-	.4byte	.LVL14
-	.4byte	0xc3d
-	.4byte	0xa25
+	.4byte	.LVL13
+	.4byte	0xc26
+	.4byte	0xa21
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1672,9 +1657,9 @@ task_dht:
 	.byte	0x35
 	.byte	0
 	.byte	0x28
-	.4byte	.LVL15
-	.4byte	0xc49
-	.4byte	0xa38
+	.4byte	.LVL14
+	.4byte	0xc32
+	.4byte	0xa34
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1682,9 +1667,9 @@ task_dht:
 	.byte	0x4e
 	.byte	0
 	.byte	0x28
-	.4byte	.LVL16
-	.4byte	0xc3d
-	.4byte	0xa4b
+	.4byte	.LVL15
+	.4byte	0xc26
+	.4byte	0xa47
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1692,8 +1677,8 @@ task_dht:
 	.byte	0x35
 	.byte	0
 	.byte	0x2a
-	.4byte	.LVL17
-	.4byte	0xc3d
+	.4byte	.LVL16
+	.4byte	0xc26
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1702,15 +1687,15 @@ task_dht:
 	.byte	0
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL8
-	.4byte	0xc0d
+	.4byte	.LVL7
+	.4byte	0xbf6
 	.byte	0x2b
-	.4byte	.LVL9
-	.4byte	0xba4
+	.4byte	.LVL8
+	.4byte	0xb8d
 	.byte	0x28
-	.4byte	.LVL10
-	.4byte	0xc55
-	.4byte	0xa90
+	.4byte	.LVL9
+	.4byte	0xc3e
+	.4byte	0xa8c
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1734,9 +1719,19 @@ task_dht:
 	.byte	0x1
 	.byte	0
 	.byte	0x28
+	.4byte	.LVL10
+	.4byte	0xc26
+	.4byte	0xa9f
+	.byte	0x29
+	.byte	0x1
+	.byte	0x5a
+	.byte	0x1
+	.byte	0x35
+	.byte	0
+	.byte	0x28
 	.4byte	.LVL11
-	.4byte	0xc3d
-	.4byte	0xaa3
+	.4byte	0xc26
+	.4byte	0xab2
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1745,8 +1740,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL12
-	.4byte	0xc3d
-	.4byte	0xab6
+	.4byte	0xc26
+	.4byte	0xac5
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1754,19 +1749,9 @@ task_dht:
 	.byte	0x35
 	.byte	0
 	.byte	0x28
-	.4byte	.LVL13
-	.4byte	0xc3d
-	.4byte	0xac9
-	.byte	0x29
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x1
-	.byte	0x35
-	.byte	0
-	.byte	0x28
-	.4byte	.LVL21
-	.4byte	0xc61
-	.4byte	0xae4
+	.4byte	.LVL20
+	.4byte	0xc4a
+	.4byte	0xae0
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1782,12 +1767,23 @@ task_dht:
 	.byte	0x1c
 	.byte	0
 	.byte	0x2b
+	.4byte	.LVL21
+	.4byte	0xc56
+	.byte	0x28
 	.4byte	.LVL22
-	.4byte	0xc6d
+	.4byte	0xc56
+	.4byte	0xb00
+	.byte	0x29
+	.byte	0x1
+	.byte	0x5a
+	.byte	0x5
+	.byte	0x3
+	.4byte	.LC2
+	.byte	0
 	.byte	0x28
 	.4byte	.LVL23
-	.4byte	0xc6d
-	.4byte	0xb04
+	.4byte	0xc56
+	.4byte	0xb17
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1797,19 +1793,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL24
-	.4byte	0xc6d
-	.4byte	0xb1b
-	.byte	0x29
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC4
-	.byte	0
-	.byte	0x28
-	.4byte	.LVL25
-	.4byte	0xc79
-	.4byte	0xb30
+	.4byte	0xc62
+	.4byte	0xb2c
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1818,14 +1803,14 @@ task_dht:
 	.2byte	0x2710
 	.byte	0
 	.byte	0x2a
-	.4byte	.LVL27
-	.4byte	0xc6d
+	.4byte	.LVL26
+	.4byte	0xc56
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC2
+	.4byte	.LC1
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5b
@@ -1888,20 +1873,10 @@ task_dht:
 	.byte	0x1c
 	.byte	0
 	.byte	0
-	.byte	0x2a
-	.4byte	.LVL7
-	.4byte	0xc6d
-	.byte	0x29
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC0
-	.byte	0
 	.byte	0
 	.byte	0xc
 	.4byte	0x67
-	.4byte	0xba4
+	.4byte	0xb8d
 	.byte	0xd
 	.4byte	0x2c
 	.byte	0x4
@@ -1915,11 +1890,11 @@ task_dht:
 	.4byte	.LFE5-.LFB5
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xc0d
+	.4byte	0xbf6
 	.byte	0x28
 	.4byte	.LVL1
-	.4byte	0xc86
-	.4byte	0xbd2
+	.4byte	0xc6f
+	.4byte	0xbbb
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1933,8 +1908,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL2
-	.4byte	0xc79
-	.4byte	0xbe5
+	.4byte	0xc62
+	.4byte	0xbce
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1943,8 +1918,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL3
-	.4byte	0xc86
-	.4byte	0xbfd
+	.4byte	0xc6f
+	.4byte	0xbe6
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1958,7 +1933,7 @@ task_dht:
 	.byte	0
 	.byte	0x2d
 	.4byte	.LVL4
-	.4byte	0xc49
+	.4byte	0xc32
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1975,10 +1950,10 @@ task_dht:
 	.4byte	.LFE4-.LFB4
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xc3d
+	.4byte	0xc26
 	.byte	0x2d
 	.4byte	.LVL0
-	.4byte	0xc92
+	.4byte	0xc7b
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -2551,8 +2526,6 @@ task_dht:
 	.byte	0x1
 	.byte	0x55
 	.byte	0x17
-	.byte	0x1
-	.byte	0x13
 	.byte	0
 	.byte	0
 	.byte	0x25
@@ -2749,11 +2722,11 @@ task_dht:
 	.4byte	0
 	.4byte	0
 .LLST1:
-	.4byte	.LVL18
-	.4byte	.LVL20
+	.4byte	.LVL17
+	.4byte	.LVL19
 	.2byte	0x1
 	.byte	0x68
-	.4byte	.LVL26
+	.4byte	.LVL25
 	.4byte	.LFE6
 	.2byte	0x1
 	.byte	0x68
@@ -2783,8 +2756,6 @@ task_dht:
 	.4byte	.LBE4
 	.4byte	.LBB5
 	.4byte	.LBE5
-	.4byte	.LBB6
-	.4byte	.LBE6
 	.4byte	0
 	.4byte	0
 	.4byte	.LFB4

@@ -30,7 +30,7 @@ void sendStartSignal()
 
 void task_dht(void *pvParameters)
 {
-  printf("DHT22 task started\r\n");
+
   while (1)
   {
     initiateGPIO();

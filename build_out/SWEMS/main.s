@@ -119,91 +119,91 @@ task_buzzer:
 init_adc.part.0:
 .LFB36:
 	.file 2 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
-	.loc 2 100 6
+	.loc 2 97 6
 	.cfi_startproc
 .LVL8:
-	.loc 2 106 5
-	.loc 2 113 3
-	.loc 2 100 6 is_stmt 0
+	.loc 2 103 5
+	.loc 2 110 3
+	.loc 2 97 6 is_stmt 0
 	addi	sp,sp,-16
 	.cfi_def_cfa_offset 16
-	.loc 2 113 3
+	.loc 2 110 3
 	li	a1,4096
 	li	a0,1
-	.loc 2 100 6
+	.loc 2 97 6
 	sw	ra,12(sp)
 	sw	s0,8(sp)
 	.cfi_offset 1, -4
 	.cfi_offset 8, -8
-	.loc 2 113 3
+	.loc 2 110 3
 	call	bl_adc_freq_init
 .LVL9:
-	.loc 2 115 3 is_stmt 1
+	.loc 2 112 3 is_stmt 1
 	li	a1,14
 	li	a0,1
 	call	bl_adc_init
 .LVL10:
-	.loc 2 117 3
+	.loc 2 114 3
 .LBB10:
 .LBB11:
-	.loc 2 72 3
-	.loc 2 72 12 is_stmt 0
+	.loc 2 69 3
+	.loc 2 69 12 is_stmt 0
 	li	a3,1073807360
 	lw	a5,-1772(a3)
 .LVL11:
-	.loc 2 74 3 is_stmt 1
-	.loc 2 75 3
-	.loc 2 77 3
-	.loc 2 79 5
-	.loc 2 86 3
+	.loc 2 71 3 is_stmt 1
+	.loc 2 72 3
+	.loc 2 74 3
+	.loc 2 76 5
+	.loc 2 83 3
 	li	a4,-264355840
 	addi	a4,a4,-1
 	and	a5,a5,a4
 .LVL12:
-	.loc 2 87 3
-	.loc 2 89 5
-	.loc 2 89 9 is_stmt 0
+	.loc 2 84 3
+	.loc 2 86 5
+	.loc 2 86 9 is_stmt 0
 	li	a4,37822464
 	or	a5,a5,a4
 .LVL13:
-	.loc 2 96 3 is_stmt 1
-	.loc 2 96 59 is_stmt 0
+	.loc 2 93 3 is_stmt 1
+	.loc 2 93 59 is_stmt 0
 	sw	a5,-1772(a3)
-	.loc 2 97 3 is_stmt 1
+	.loc 2 94 3 is_stmt 1
 .LVL14:
 .LBE11:
 .LBE10:
-	.loc 2 119 3
+	.loc 2 116 3
 	li	a1,1024
 	li	a0,1
 	call	bl_adc_dma_init
 .LVL15:
-	.loc 2 121 3
+	.loc 2 118 3
 	li	a0,14
 	call	bl_adc_gpio_init
 .LVL16:
-	.loc 2 123 3
-	.loc 2 123 17 is_stmt 0
+	.loc 2 120 3
+	.loc 2 120 17 is_stmt 0
 	li	a0,14
 	call	bl_adc_get_channel_by_gpio
 .LVL17:
 	mv	s0,a0
 .LVL18:
-	.loc 2 124 3 is_stmt 1
-	.loc 2 124 20 is_stmt 0
+	.loc 2 121 3 is_stmt 1
+	.loc 2 121 20 is_stmt 0
 	li	a0,1
 	call	bl_dma_find_ctx_by_channel
 .LVL19:
-	.loc 2 125 3 is_stmt 1
-	.loc 2 125 30 is_stmt 0
+	.loc 2 122 3 is_stmt 1
+	.loc 2 122 30 is_stmt 0
 	li	a5,1
 	sll	a4,a5,s0
-	.loc 2 125 24
+	.loc 2 122 24
 	lw	a5,16(a0)
 	or	a5,a5,a4
 	sw	a5,16(a0)
-	.loc 2 127 3 is_stmt 1
-	.loc 2 128 1 is_stmt 0
+	.loc 2 124 3 is_stmt 1
+	.loc 2 125 1 is_stmt 0
 	lw	s0,8(sp)
 	.cfi_restore 8
 .LVL20:
@@ -211,7 +211,7 @@ init_adc.part.0:
 	.cfi_restore 1
 	addi	sp,sp,16
 	.cfi_def_cfa_offset 0
-	.loc 2 127 3
+	.loc 2 124 3
 	tail	bl_adc_start
 .LVL21:
 	.cfi_endproc
@@ -223,13 +223,13 @@ init_adc.part.0:
 	.type	init_adc, @function
 init_adc:
 .LFB30:
-	.loc 2 101 1 is_stmt 1
+	.loc 2 98 1 is_stmt 1
 	.cfi_startproc
 .LVL22:
-	.loc 2 102 3
+	.loc 2 99 3
 	li	a5,14
 	beq	a0,a5,.L10
-	.loc 2 109 5
+	.loc 2 106 5
 	lui	a0,%hi(.LC1)
 .LVL23:
 	addi	a0,a0,%lo(.LC1)
@@ -247,89 +247,89 @@ init_adc:
 	.type	read_adc, @function
 read_adc:
 .LFB31:
-	.loc 2 131 1
+	.loc 2 128 1
 	.cfi_startproc
-	.loc 2 132 3
-	.loc 2 134 3
-	.loc 2 131 1 is_stmt 0
+	.loc 2 129 3
+	.loc 2 131 3
+	.loc 2 128 1 is_stmt 0
 	addi	sp,sp,-16
 	.cfi_def_cfa_offset 16
-	.loc 2 134 20
+	.loc 2 131 20
 	li	a0,1
-	.loc 2 131 1
+	.loc 2 128 1
 	sw	ra,12(sp)
 	sw	s0,8(sp)
 	.cfi_offset 1, -4
 	.cfi_offset 8, -8
-	.loc 2 134 20
+	.loc 2 131 20
 	call	bl_dma_find_ctx_by_channel
 .LVL26:
-	.loc 2 136 3 is_stmt 1
-	.loc 2 136 10 is_stmt 0
+	.loc 2 133 3 is_stmt 1
+	.loc 2 133 10 is_stmt 0
 	lw	a1,4(a0)
 	li	a0,0
 .LVL27:
-	.loc 2 136 6
+	.loc 2 133 6
 	beq	a1,zero,.L11
-	.loc 2 141 3 is_stmt 1
+	.loc 2 138 3 is_stmt 1
 	lui	s0,%hi(adc_data.4352)
 	li	a2,4096
 	addi	a0,s0,%lo(adc_data.4352)
 	call	memcpy
 .LVL28:
-	.loc 2 146 3
-	.loc 2 147 3
-	.loc 2 147 8
+	.loc 2 143 3
+	.loc 2 144 3
+	.loc 2 144 8
 	addi	a5,s0,%lo(adc_data.4352)
 	li	a3,4096
 .LBB16:
 .LBB17:
 .LBB18:
 .LBB19:
-	.loc 2 149 37 is_stmt 0
+	.loc 2 146 37 is_stmt 0
 	li	a1,65536
-	.loc 2 149 47
+	.loc 2 146 47
 	li	a2,32768
 	add	a3,a5,a3
 .LBE19:
 .LBE18:
-	.loc 2 146 12
+	.loc 2 143 12
 	li	a0,0
 .LBB21:
 .LBB20:
-	.loc 2 149 37
+	.loc 2 146 37
 	addi	a1,a1,-1
-	.loc 2 149 47
+	.loc 2 146 47
 	addi	a2,a2,-768
 .LVL29:
 .L13:
-	.loc 2 149 5 is_stmt 1
-	.loc 2 150 5
-	.loc 2 149 37 is_stmt 0
+	.loc 2 146 5 is_stmt 1
+	.loc 2 147 5
+	.loc 2 146 37 is_stmt 0
 	lw	a4,0(a5)
 	addi	a5,a5,4
 .LVL30:
 	and	a4,a4,a1
 .LVL31:
-	.loc 2 149 47
+	.loc 2 146 47
 	mul	a4,a4,a2
-	.loc 2 149 14
+	.loc 2 146 14
 	srli	a4,a4,16
-	.loc 2 150 9
+	.loc 2 147 9
 	add	a0,a0,a4
 .LVL32:
 .LBE20:
-	.loc 2 147 3
+	.loc 2 144 3
 	bne	a3,a5,.L13
 .LBE21:
-	.loc 2 153 3 is_stmt 1
-	.loc 2 153 14 is_stmt 0
+	.loc 2 150 3 is_stmt 1
+	.loc 2 150 14 is_stmt 0
 	srli	a0,a0,10
 .LVL33:
 .L11:
 .LBE17:
 .LBE16:
-	.loc 2 154 1
+	.loc 2 151 1
 	lw	ra,12(sp)
 	.cfi_restore 1
 	lw	s0,8(sp)
@@ -355,15 +355,15 @@ task_mq4:
 	.loc 2 29 1 is_stmt 1
 	.cfi_startproc
 .LVL34:
-	.loc 2 30 3
-	lui	a0,%hi(.LC2)
-.LVL35:
+	.loc 2 31 3
+.LBB22:
+.LBB23:
+	.loc 2 99 3
+.LBE23:
+.LBE22:
 	.loc 2 29 1 is_stmt 0
 	addi	sp,sp,-64
 	.cfi_def_cfa_offset 64
-	.loc 2 30 3
-	addi	a0,a0,%lo(.LC2)
-	.loc 2 29 1
 	sw	ra,60(sp)
 	sw	s0,56(sp)
 	sw	s1,52(sp)
@@ -390,165 +390,155 @@ task_mq4:
 	.cfi_offset 25, -44
 	.cfi_offset 26, -48
 	.cfi_offset 27, -52
-	.loc 2 30 3
-	call	printf
-.LVL36:
-	.loc 2 32 3 is_stmt 1
-.LBB22:
-.LBB23:
-	.loc 2 102 3
+.LBB25:
+.LBB24:
 	call	init_adc.part.0
-.LVL37:
-.LBE23:
-.LBE22:
-	.loc 2 34 3
-	lui	a0,%hi(.LC3)
-	addi	a0,a0,%lo(.LC3)
-	call	printf
-.LVL38:
-	.loc 2 36 3
+.LVL35:
+.LBE24:
+.LBE25:
+	.loc 2 33 3 is_stmt 1
 	li	a0,2000
 	call	vTaskDelay
-.LVL39:
-.LBB24:
-	.loc 2 42 12 is_stmt 0
-	lui	a5,%hi(.LC4)
-	lw	s8,%lo(.LC4)(a5)
-	lw	s9,%lo(.LC4+4)(a5)
-	.loc 2 44 12
-	lui	a5,%hi(.LC5)
-	lw	s0,%lo(.LC5)(a5)
-	lw	s1,%lo(.LC5+4)(a5)
-.LBB25:
-	.loc 2 56 36
-	lui	a5,%hi(.LC6)
-	lw	s2,%lo(.LC6)(a5)
-	lw	s3,%lo(.LC6+4)(a5)
-	.loc 2 56 14
-	lui	a5,%hi(.LC7)
-	lw	s4,%lo(.LC7)(a5)
-	lw	s5,%lo(.LC7+4)(a5)
-	.loc 2 59 13
-	lui	a5,%hi(.LC11)
-	lw	s6,%lo(.LC11)(a5)
-	lw	s7,%lo(.LC11+4)(a5)
-.L21:
-.LBE25:
-.LBE24:
-	.loc 2 38 3 is_stmt 1
+.LVL36:
+.LBB26:
+	.loc 2 39 12 is_stmt 0
+	lui	a5,%hi(.LC2)
+	lw	s8,%lo(.LC2)(a5)
+	lw	s9,%lo(.LC2+4)(a5)
+	.loc 2 41 12
+	lui	a5,%hi(.LC3)
+	lw	s0,%lo(.LC3)(a5)
+	lw	s1,%lo(.LC3+4)(a5)
 .LBB27:
-	.loc 2 40 5
-	.loc 2 40 25 is_stmt 0
+	.loc 2 53 36
+	lui	a5,%hi(.LC4)
+	lw	s2,%lo(.LC4)(a5)
+	lw	s3,%lo(.LC4+4)(a5)
+	.loc 2 53 14
+	lui	a5,%hi(.LC5)
+	lw	s4,%lo(.LC5)(a5)
+	lw	s5,%lo(.LC5+4)(a5)
+	.loc 2 56 13
+	lui	a5,%hi(.LC9)
+	lw	s6,%lo(.LC9)(a5)
+	lw	s7,%lo(.LC9+4)(a5)
+.L21:
+.LBE27:
+.LBE26:
+	.loc 2 35 3 is_stmt 1
+.LBB29:
+	.loc 2 37 5
+	.loc 2 37 25 is_stmt 0
 	call	read_adc
-.LVL40:
-	.loc 2 42 5 is_stmt 1
-	.loc 2 44 5
-	.loc 2 42 26 is_stmt 0
+.LVL37:
+	.loc 2 39 5 is_stmt 1
+	.loc 2 41 5
+	.loc 2 39 26 is_stmt 0
 	call	__floatunsidf
-.LVL41:
-	.loc 2 42 12
+.LVL38:
+	.loc 2 39 12
 	mv	a2,s8
 	mv	a3,s9
 	call	__divdf3
-.LVL42:
-	.loc 2 44 12
+.LVL39:
+	.loc 2 41 12
 	mv	a2,s0
 	mv	a3,s1
 	call	__muldf3
-.LVL43:
-	.loc 2 51 8
+.LVL40:
+	.loc 2 48 8
 	li	a2,0
 	li	a3,0
-	.loc 2 44 12
+	.loc 2 41 12
 	mv	s10,a0
 	mv	s11,a1
-.LVL44:
-	.loc 2 51 5 is_stmt 1
-	.loc 2 51 8 is_stmt 0
+.LVL41:
+	.loc 2 48 5 is_stmt 1
+	.loc 2 48 8 is_stmt 0
 	call	__nedf2
-.LVL45:
+.LVL42:
 	beq	a0,zero,.L19
-.LBB26:
-	.loc 2 53 7 is_stmt 1
-.LVL46:
+.LBB28:
+	.loc 2 50 7 is_stmt 1
+.LVL43:
+	.loc 2 51 7
+	.loc 2 52 7
+	.loc 2 53 7
 	.loc 2 54 7
 	.loc 2 55 7
-	.loc 2 56 7
-	.loc 2 57 7
-	.loc 2 58 7
-	.loc 2 56 36 is_stmt 0
+	.loc 2 53 36 is_stmt 0
 	mv	a2,s10
 	mv	a3,s11
 	mv	a0,s2
 	mv	a1,s3
 	call	__divdf3
-.LVL47:
-	.loc 2 56 14
+.LVL44:
+	.loc 2 53 14
 	mv	a2,s4
 	mv	a3,s5
 	call	__subdf3
+.LVL45:
+	.loc 2 54 14
+	lui	a5,%hi(.LC6)
+	lw	a2,%lo(.LC6)(a5)
+	lw	a3,%lo(.LC6+4)(a5)
+	call	__divdf3
+.LVL46:
+	.loc 2 55 25
+	call	log10
+.LVL47:
+	.loc 2 56 7 is_stmt 1
+	.loc 2 55 38 is_stmt 0
+	lui	a5,%hi(.LC7)
+	lw	a2,%lo(.LC7)(a5)
+	lw	a3,%lo(.LC7+4)(a5)
+	call	__subdf3
 .LVL48:
-	.loc 2 57 14
+	.loc 2 55 14
 	lui	a5,%hi(.LC8)
 	lw	a2,%lo(.LC8)(a5)
 	lw	a3,%lo(.LC8+4)(a5)
 	call	__divdf3
 .LVL49:
-	.loc 2 58 25
-	call	log10
-.LVL50:
-	.loc 2 59 7 is_stmt 1
-	.loc 2 58 38 is_stmt 0
-	lui	a5,%hi(.LC9)
-	lw	a2,%lo(.LC9)(a5)
-	lw	a3,%lo(.LC9+4)(a5)
-	call	__subdf3
-.LVL51:
-	.loc 2 58 14
-	lui	a5,%hi(.LC10)
-	lw	a2,%lo(.LC10)(a5)
-	lw	a3,%lo(.LC10+4)(a5)
-	call	__divdf3
-.LVL52:
-	.loc 2 59 13
+	.loc 2 56 13
 	mv	a2,a0
 	mv	a3,a1
 	mv	a0,s6
 	mv	a1,s7
 	call	pow
-.LVL53:
-	.loc 2 59 30
-	lui	a5,%hi(.LC12)
-	lw	a2,%lo(.LC12)(a5)
-	lw	a3,%lo(.LC12+4)(a5)
+.LVL50:
+	.loc 2 56 30
+	lui	a5,%hi(.LC10)
+	lw	a2,%lo(.LC10)(a5)
+	lw	a3,%lo(.LC10+4)(a5)
 	call	__adddf3
-.LVL54:
-	.loc 2 59 11
+.LVL51:
+	.loc 2 56 11
 	lui	a5,%hi(.LANCHOR0)
-	.loc 2 59 30
+	.loc 2 56 30
 	mv	a2,a0
-	.loc 2 59 11
+	.loc 2 56 11
 	sw	a0,%lo(.LANCHOR0)(a5)
-	.loc 2 61 7
-	lui	a0,%hi(.LC13)
-	.loc 2 59 30
+	.loc 2 58 7
+	lui	a0,%hi(.LC11)
+	.loc 2 56 30
 	mv	a3,a1
-	.loc 2 61 7
-	addi	a0,a0,%lo(.LC13)
-	.loc 2 59 11
+	.loc 2 58 7
+	addi	a0,a0,%lo(.LC11)
+	.loc 2 56 11
 	sw	a1,%lo(.LANCHOR0+4)(a5)
-	.loc 2 61 7 is_stmt 1
+	.loc 2 58 7 is_stmt 1
 	call	printf
-.LVL55:
+.LVL52:
 .L19:
-.LBE26:
-	.loc 2 64 5
+.LBE28:
+	.loc 2 61 5
 	li	a0,4096
 	addi	a0,a0,904
 	call	vTaskDelay
-.LVL56:
-.LBE27:
-	.loc 2 39 3 is_stmt 0
+.LVL53:
+.LBE29:
+	.loc 2 36 3 is_stmt 0
 	j	.L21
 	.cfi_endproc
 .LFE28:
@@ -567,7 +557,7 @@ initiateGPIO:
 	li	a1,0
 	li	a0,5
 	tail	bl_gpio_enable_output
-.LVL57:
+.LVL54:
 	.cfi_endproc
 .LFE32:
 	.size	initiateGPIO, .-initiateGPIO
@@ -591,16 +581,16 @@ sendStartSignal:
 	.cfi_offset 1, -4
 	.loc 3 24 3
 	call	bl_gpio_output_set
-.LVL58:
+.LVL55:
 	.loc 3 25 3 is_stmt 1
 	li	a0,1
 	call	vTaskDelay
-.LVL59:
+.LVL56:
 	.loc 3 27 3
 	li	a1,1
 	li	a0,5
 	call	bl_gpio_output_set
-.LVL60:
+.LVL57:
 	.loc 3 28 3
 	.loc 3 29 1 is_stmt 0
 	lw	ra,12(sp)
@@ -612,7 +602,7 @@ sendStartSignal:
 	.cfi_def_cfa_offset 0
 	.loc 3 28 3
 	tail	bl_timer_delay_us
-.LVL61:
+.LVL58:
 	.cfi_endproc
 .LFE33:
 	.size	sendStartSignal, .-sendStartSignal
@@ -624,16 +614,9 @@ task_dht:
 .LFB34:
 	.loc 3 32 1 is_stmt 1
 	.cfi_startproc
-.LVL62:
-	.loc 3 33 3
-	lui	a0,%hi(.LC14)
-.LVL63:
-	.loc 3 32 1 is_stmt 0
+.LVL59:
 	addi	sp,sp,-64
 	.cfi_def_cfa_offset 64
-	.loc 3 33 3
-	addi	a0,a0,%lo(.LC14)
-	.loc 3 32 1
 	sw	s1,52(sp)
 	sw	s2,48(sp)
 	sw	s3,44(sp)
@@ -654,51 +637,47 @@ task_dht:
 	.cfi_offset 1, -4
 	.cfi_offset 8, -8
 	.cfi_offset 24, -40
-.LBB28:
-	.loc 3 42 11
-	li	s1,1
-.LBE28:
-	.loc 3 33 3
-	call	printf
-.LVL64:
 .LBB30:
+	.loc 3 42 11 is_stmt 0
+	li	s1,1
 	.loc 3 64 14
 	lui	s2,%hi(humidity)
 	.loc 3 65 10
 	lui	s3,%hi(temp)
-	lui	s4,%hi(.LC17)
-	lui	s5,%hi(.LC18)
+	lui	s4,%hi(.LC14)
+	lui	s5,%hi(.LC15)
 	.loc 3 88 7
-	lui	s6,%hi(.LC16)
+	lui	s6,%hi(.LC13)
 	.loc 3 76 9
-	lui	s7,%hi(.LC15)
+	lui	s7,%hi(.LC12)
+.LVL60:
 .L39:
 .LBE30:
 	.loc 3 34 3 is_stmt 1
-.LBB31:
+.LBB32:
 	.loc 3 36 5
 	call	initiateGPIO
-.LVL65:
+.LVL61:
 	.loc 3 37 5
 	.loc 3 37 13 is_stmt 0
 	sw	zero,8(sp)
 	sb	zero,12(sp)
 	.loc 3 38 5 is_stmt 1
 	call	sendStartSignal
-.LVL66:
+.LVL62:
 	.loc 3 40 5
 	li	a2,0
 	li	a1,0
 	li	a0,5
 	call	bl_gpio_enable_input
-.LVL67:
+.LVL63:
 	.loc 3 42 5
 .L28:
 	.loc 3 43 7 discriminator 1
 	.loc 3 42 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL68:
+.LVL64:
 	.loc 3 42 11 discriminator 1
 	beq	a0,s1,.L28
 .L29:
@@ -706,7 +685,7 @@ task_dht:
 	.loc 3 44 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL69:
+.LVL65:
 	.loc 3 44 11 discriminator 1
 	beq	a0,zero,.L29
 .L30:
@@ -714,10 +693,10 @@ task_dht:
 	.loc 3 46 12 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL70:
+.LVL66:
 	.loc 3 46 11 discriminator 1
 	beq	a0,s1,.L30
-.LBB29:
+.LBB31:
 	.loc 3 49 14
 	li	s8,0
 	.loc 3 49 5
@@ -727,18 +706,18 @@ task_dht:
 	.loc 3 51 14 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL71:
+.LVL67:
 	.loc 3 51 13 discriminator 1
 	beq	a0,zero,.L31
 	.loc 3 54 7 is_stmt 1
 	li	a0,30
 	call	bl_timer_delay_us
-.LVL72:
+.LVL68:
 	.loc 3 56 7
 	.loc 3 56 11 is_stmt 0
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL73:
+.LVL69:
 	.loc 3 56 10
 	beq	a0,zero,.L33
 	.loc 3 58 9 is_stmt 1
@@ -761,15 +740,15 @@ task_dht:
 	.loc 3 61 14 is_stmt 0 discriminator 1
 	li	a0,5
 	call	bl_gpio_input_get_value
-.LVL74:
+.LVL70:
 	.loc 3 61 13 discriminator 1
 	beq	a0,s1,.L33
 	.loc 3 49 30 discriminator 2
 	addi	s8,s8,1
-.LVL75:
+.LVL71:
 	.loc 3 49 5 discriminator 2
 	bne	s8,s0,.L31
-.LBE29:
+.LBE31:
 	.loc 3 64 5 is_stmt 1
 	.loc 3 64 21 is_stmt 0
 	lbu	a2,8(sp)
@@ -805,7 +784,7 @@ task_dht:
 	.loc 3 65 10
 	sh	a1,%lo(temp)(s3)
 	.loc 3 66 5 is_stmt 1
-.LVL76:
+.LVL72:
 	.loc 3 70 5
 	.loc 3 70 8 is_stmt 0
 	bne	a5,a4,.L35
@@ -819,20 +798,20 @@ task_dht:
 	srai	s0,s0,16
 	.loc 3 76 9
 	li	s8,10
-.LVL77:
+.LVL73:
 	rem	a0,s0,s8
 	.loc 3 75 14
 	sh	s0,%lo(temp)(s3)
 	.loc 3 76 9 is_stmt 1
 	call	abs
-.LVL78:
+.LVL74:
 	div	a1,s0,s8
 	mv	a2,a0
-	addi	a0,s7,%lo(.LC15)
+	addi	a0,s7,%lo(.LC12)
 .L52:
 	.loc 3 80 9 is_stmt 0
 	call	printf
-.LVL79:
+.LVL75:
 	.loc 3 83 7 is_stmt 1
 	lhu	a1,%lo(humidity)(s2)
 	li	a5,10
@@ -840,44 +819,44 @@ task_dht:
 	divu	a1,a1,a5
 .L53:
 	.loc 3 89 7 is_stmt 0
-	addi	a0,s4,%lo(.LC17)
+	addi	a0,s4,%lo(.LC14)
 	call	printf
-.LVL80:
+.LVL76:
 	.loc 3 90 7 is_stmt 1
-	addi	a0,s5,%lo(.LC18)
+	addi	a0,s5,%lo(.LC15)
 	call	printf
-.LVL81:
+.LVL77:
 	.loc 3 93 5
 	li	a0,8192
 	addi	a0,a0,1808
 	call	vTaskDelay
-.LVL82:
-.LBE31:
+.LVL78:
+.LBE32:
 	.loc 3 35 3 is_stmt 0
 	j	.L39
-.LVL83:
+.LVL79:
 .L36:
-.LBB32:
+.LBB33:
 	.loc 3 80 9 is_stmt 1
 	li	a5,10
 	rem	a2,a1,a5
-	addi	a0,s6,%lo(.LC16)
+	addi	a0,s6,%lo(.LC13)
 	div	a1,a1,a5
 	j	.L52
 .L35:
 	.loc 3 88 7
 	li	s0,10
 	rem	a2,a1,s0
-	addi	a0,s6,%lo(.LC16)
+	addi	a0,s6,%lo(.LC13)
 	div	a1,a1,s0
 	call	printf
-.LVL84:
+.LVL80:
 	.loc 3 89 7
 	lhu	a1,%lo(humidity)(s2)
 	remu	a2,a1,s0
 	divu	a1,a1,s0
 	j	.L53
-.LBE32:
+.LBE33:
 	.cfi_endproc
 .LFE34:
 	.size	task_dht, .-task_dht
@@ -907,15 +886,15 @@ bfl_main:
 	.cfi_offset 1, -4
 	.loc 4 40 5
 	call	bl_uart_init
-.LVL85:
+.LVL81:
 	.loc 4 43 5 is_stmt 1
 	lui	a0,%hi(.LANCHOR1)
 	addi	a0,a0,%lo(.LANCHOR1)
 	call	vPortDefineHeapRegions
-.LVL86:
+.LVL82:
 	.loc 4 46 5
 	call	bl_dma_init
-.LVL87:
+.LVL83:
 	.loc 4 49 5
 	.loc 4 50 5
 	.loc 4 52 5
@@ -925,45 +904,45 @@ bfl_main:
 	.loc 4 59 5
 	lui	a6,%hi(.LANCHOR2)
 	lui	a5,%hi(mq4_stack.5257)
-	lui	a1,%hi(.LC19)
+	lui	a1,%hi(.LC16)
 	lui	a0,%hi(task_mq4)
 	addi	a6,a6,%lo(.LANCHOR2)
 	addi	a5,a5,%lo(mq4_stack.5257)
 	li	a4,15
 	li	a3,0
 	li	a2,512
-	addi	a1,a1,%lo(.LC19)
+	addi	a1,a1,%lo(.LC16)
 	addi	a0,a0,%lo(task_mq4)
 	call	xTaskCreateStatic
-.LVL88:
+.LVL84:
 	.loc 4 68 5
 	lui	a6,%hi(.LANCHOR3)
 	lui	a5,%hi(.LANCHOR4)
-	lui	a1,%hi(.LC20)
+	lui	a1,%hi(.LC17)
 	lui	a0,%hi(task_buzzer)
 	addi	a6,a6,%lo(.LANCHOR3)
 	addi	a5,a5,%lo(.LANCHOR4)
 	li	a4,10
 	li	a3,0
 	li	a2,128
-	addi	a1,a1,%lo(.LC20)
+	addi	a1,a1,%lo(.LC17)
 	addi	a0,a0,%lo(task_buzzer)
 	call	xTaskCreateStatic
-.LVL89:
+.LVL85:
 	.loc 4 76 5
 	lui	a6,%hi(.LANCHOR5)
 	lui	a5,%hi(dht_stack.5261)
-	lui	a1,%hi(.LC21)
+	lui	a1,%hi(.LC18)
 	lui	a0,%hi(task_dht)
 	addi	a6,a6,%lo(.LANCHOR5)
 	addi	a5,a5,%lo(dht_stack.5261)
 	li	a4,30
 	li	a3,0
 	li	a2,768
-	addi	a1,a1,%lo(.LC21)
+	addi	a1,a1,%lo(.LC18)
 	addi	a0,a0,%lo(task_dht)
 	call	xTaskCreateStatic
-.LVL90:
+.LVL86:
 	.loc 4 87 5
 	.loc 4 88 1 is_stmt 0
 	lw	ra,12(sp)
@@ -972,7 +951,7 @@ bfl_main:
 	.cfi_def_cfa_offset 0
 	.loc 4 87 5
 	tail	vTaskStartScheduler
-.LVL91:
+.LVL87:
 	.cfi_endproc
 .LFE35:
 	.size	bfl_main, .-bfl_main
@@ -1043,12 +1022,12 @@ xHeapRegions:
 	.word	0
 	.section	.rodata.bfl_main.str1.4,"aMS",@progbits,1
 	.align	2
-.LC19:
+.LC16:
 	.string	"mq4"
-.LC20:
+.LC17:
 	.string	"buzzer"
 	.zero	1
-.LC21:
+.LC18:
 	.string	"dht"
 	.section	.rodata.init_adc.str1.4,"aMS",@progbits,1
 	.align	2
@@ -1061,57 +1040,48 @@ xHeapRegions:
 	.word	1081262080
 	.section	.rodata.task_dht.str1.4,"aMS",@progbits,1
 	.align	2
-.LC14:
-	.string	"DHT22 task started\r\n"
-	.zero	3
-.LC15:
+.LC12:
 	.string	"\033[31mTemperature: %d.%d *C\r\n"
 	.zero	3
-.LC16:
+.LC13:
 	.string	"\033[36mTemperature: %d.%d *C\r\n"
 	.zero	3
-.LC17:
+.LC14:
 	.string	"\033[33mHumidity: %d.%d \r\n"
-.LC18:
+.LC15:
 	.string	"\033[0m"
 	.section	.rodata.task_mq4.cst8,"aM",@progbits,8
 	.align	3
-.LC4:
+.LC2:
 	.word	0
 	.word	1082081280
-.LC5:
+.LC3:
 	.word	1078989829
 	.word	1064568065
-.LC6:
+.LC4:
 	.word	0
 	.word	1075052544
-.LC7:
+.LC5:
 	.word	0
 	.word	1072693248
-.LC8:
+.LC6:
 	.word	2576980378
 	.word	1076337049
-.LC9:
+.LC7:
 	.word	2611340116
 	.word	1072832708
-.LC10:
+.LC8:
 	.word	2886218023
 	.word	-1076602340
-.LC11:
+.LC9:
 	.word	0
 	.word	1076101120
-.LC12:
+.LC10:
 	.word	0
 	.word	1080623104
 	.section	.rodata.task_mq4.str1.4,"aMS",@progbits,1
 	.align	2
-.LC2:
-	.string	"MQ4 task started\r\n"
-	.zero	1
-.LC3:
-	.string	"MQ4 Sensor initialized\r\n"
-	.zero	3
-.LC13:
+.LC11:
 	.string	"\033[35mGas ppm = %f\r\n"
 	.section	.sbss.buzz,"aw",@nobits
 	.align	2
@@ -1158,7 +1128,7 @@ ppm:
 	.file 25 "/home/parag/bl_iot_sdk/components/bl602/bl602_std/bl602_std/StdDriver/Inc/bl602_adc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0x17a9
+	.4byte	0x1760
 	.2byte	0x4
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -1167,7 +1137,7 @@ ppm:
 	.byte	0xc
 	.4byte	.LASF234
 	.4byte	.LASF235
-	.4byte	.Ldebug_ranges0+0x88
+	.4byte	.Ldebug_ranges0+0x98
 	.4byte	0
 	.4byte	.Ldebug_line0
 	.byte	0x2
@@ -2919,8 +2889,8 @@ ppm:
 	.byte	0x3
 	.4byte	dht_task.5262
 	.byte	0x2b
-	.4byte	.LVL85
-	.4byte	0x1695
+	.4byte	.LVL81
+	.4byte	0x164c
 	.4byte	0xdd6
 	.byte	0x2c
 	.byte	0x1
@@ -2957,8 +2927,8 @@ ppm:
 	.4byte	0x1e8480
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL86
-	.4byte	0x16a1
+	.4byte	.LVL82
+	.4byte	0x1658
 	.4byte	0xded
 	.byte	0x2c
 	.byte	0x1
@@ -2968,11 +2938,11 @@ ppm:
 	.4byte	.LANCHOR1
 	.byte	0
 	.byte	0x2d
-	.4byte	.LVL87
-	.4byte	0x16ad
+	.4byte	.LVL83
+	.4byte	0x1664
 	.byte	0x2b
-	.4byte	.LVL88
-	.4byte	0x16b9
+	.4byte	.LVL84
+	.4byte	0x1670
 	.4byte	0xe39
 	.byte	0x2c
 	.byte	0x1
@@ -2985,7 +2955,7 @@ ppm:
 	.byte	0x5b
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC19
+	.4byte	.LC16
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5c
@@ -3016,8 +2986,8 @@ ppm:
 	.4byte	.LANCHOR2
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL89
-	.4byte	0x16b9
+	.4byte	.LVL85
+	.4byte	0x1670
 	.4byte	0xe7b
 	.byte	0x2c
 	.byte	0x1
@@ -3030,7 +3000,7 @@ ppm:
 	.byte	0x5b
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC20
+	.4byte	.LC17
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5c
@@ -3061,8 +3031,8 @@ ppm:
 	.4byte	.LANCHOR3
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL90
-	.4byte	0x16b9
+	.4byte	.LVL86
+	.4byte	0x1670
 	.4byte	0xebe
 	.byte	0x2c
 	.byte	0x1
@@ -3075,7 +3045,7 @@ ppm:
 	.byte	0x5b
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC21
+	.4byte	.LC18
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5c
@@ -3106,8 +3076,8 @@ ppm:
 	.4byte	.LANCHOR5
 	.byte	0
 	.byte	0x2e
-	.4byte	.LVL91
-	.4byte	0x16c6
+	.4byte	.LVL87
+	.4byte	0x167d
 	.byte	0
 	.byte	0xc
 	.4byte	0xbc
@@ -3139,7 +3109,7 @@ ppm:
 	.4byte	.LFE34-.LFB34
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x10e4
+	.4byte	0x10cd
 	.byte	0x30
 	.4byte	.LASF205
 	.byte	0x3
@@ -3148,14 +3118,13 @@ ppm:
 	.4byte	0xba
 	.4byte	.LLST21
 	.byte	0x31
-	.4byte	.Ldebug_ranges0+0x60
-	.4byte	0x10d0
+	.4byte	.Ldebug_ranges0+0x78
 	.byte	0x29
 	.4byte	.LASF193
 	.byte	0x3
 	.byte	0x25
 	.byte	0xd
-	.4byte	0x10e4
+	.4byte	0x10cd
 	.byte	0x2
 	.byte	0x91
 	.byte	0x48
@@ -3169,9 +3138,9 @@ ppm:
 	.byte	0x91
 	.byte	0x4c
 	.byte	0x32
-	.4byte	.LBB29
-	.4byte	.LBE29-.LBB29
-	.4byte	0xfab
+	.4byte	.LBB31
+	.4byte	.LBE31-.LBB31
+	.4byte	0xfa7
 	.byte	0x33
 	.string	"i"
 	.byte	0x3
@@ -3180,9 +3149,9 @@ ppm:
 	.4byte	0x33
 	.4byte	.LLST22
 	.byte	0x2b
-	.4byte	.LVL71
-	.4byte	0x16d3
-	.4byte	0xf75
+	.4byte	.LVL67
+	.4byte	0x168a
+	.4byte	0xf71
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3190,9 +3159,9 @@ ppm:
 	.byte	0x35
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL72
-	.4byte	0x16df
-	.4byte	0xf88
+	.4byte	.LVL68
+	.4byte	0x1696
+	.4byte	0xf84
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3200,9 +3169,9 @@ ppm:
 	.byte	0x4e
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL73
-	.4byte	0x16d3
-	.4byte	0xf9b
+	.4byte	.LVL69
+	.4byte	0x168a
+	.4byte	0xf97
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3210,8 +3179,8 @@ ppm:
 	.byte	0x35
 	.byte	0
 	.byte	0x34
-	.4byte	.LVL74
-	.4byte	0x16d3
+	.4byte	.LVL70
+	.4byte	0x168a
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3220,15 +3189,15 @@ ppm:
 	.byte	0
 	.byte	0
 	.byte	0x2d
-	.4byte	.LVL65
-	.4byte	0x115d
+	.4byte	.LVL61
+	.4byte	0x1146
 	.byte	0x2d
-	.4byte	.LVL66
-	.4byte	0x10f4
+	.4byte	.LVL62
+	.4byte	0x10dd
 	.byte	0x2b
-	.4byte	.LVL67
-	.4byte	0x16eb
-	.4byte	0xfe0
+	.4byte	.LVL63
+	.4byte	0x16a2
+	.4byte	0xfdc
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3252,9 +3221,9 @@ ppm:
 	.byte	0x1
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL68
-	.4byte	0x16d3
-	.4byte	0xff3
+	.4byte	.LVL64
+	.4byte	0x168a
+	.4byte	0xfef
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3262,9 +3231,9 @@ ppm:
 	.byte	0x35
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL69
-	.4byte	0x16d3
-	.4byte	0x1006
+	.4byte	.LVL65
+	.4byte	0x168a
+	.4byte	0x1002
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3272,9 +3241,9 @@ ppm:
 	.byte	0x35
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL70
-	.4byte	0x16d3
-	.4byte	0x1019
+	.4byte	.LVL66
+	.4byte	0x168a
+	.4byte	0x1015
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3282,9 +3251,9 @@ ppm:
 	.byte	0x35
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL78
-	.4byte	0x16f7
-	.4byte	0x1034
+	.4byte	.LVL74
+	.4byte	0x16ae
+	.4byte	0x1030
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3300,34 +3269,34 @@ ppm:
 	.byte	0x1c
 	.byte	0
 	.byte	0x2d
-	.4byte	.LVL79
-	.4byte	0x1703
+	.4byte	.LVL75
+	.4byte	0x16ba
 	.byte	0x2b
-	.4byte	.LVL80
-	.4byte	0x1703
-	.4byte	0x1054
+	.4byte	.LVL76
+	.4byte	0x16ba
+	.4byte	0x1050
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC17
+	.4byte	.LC14
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL81
-	.4byte	0x1703
-	.4byte	0x106b
+	.4byte	.LVL77
+	.4byte	0x16ba
+	.4byte	0x1067
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC18
+	.4byte	.LC15
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL82
-	.4byte	0x170f
-	.4byte	0x1080
+	.4byte	.LVL78
+	.4byte	0x16c6
+	.4byte	0x107c
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3336,14 +3305,14 @@ ppm:
 	.2byte	0x2710
 	.byte	0
 	.byte	0x34
-	.4byte	.LVL84
-	.4byte	0x1703
+	.4byte	.LVL80
+	.4byte	0x16ba
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC16
+	.4byte	.LC13
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5b
@@ -3406,20 +3375,10 @@ ppm:
 	.byte	0x1c
 	.byte	0
 	.byte	0
-	.byte	0x34
-	.4byte	.LVL64
-	.4byte	0x1703
-	.byte	0x2c
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC14
-	.byte	0
 	.byte	0
 	.byte	0xc
 	.4byte	0x7a
-	.4byte	0x10f4
+	.4byte	0x10dd
 	.byte	0xd
 	.4byte	0x2c
 	.byte	0x4
@@ -3433,11 +3392,11 @@ ppm:
 	.4byte	.LFE33-.LFB33
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x115d
+	.4byte	0x1146
 	.byte	0x2b
-	.4byte	.LVL58
-	.4byte	0x171c
-	.4byte	0x1122
+	.4byte	.LVL55
+	.4byte	0x16d3
+	.4byte	0x110b
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3450,9 +3409,9 @@ ppm:
 	.byte	0x30
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL59
-	.4byte	0x170f
-	.4byte	0x1135
+	.4byte	.LVL56
+	.4byte	0x16c6
+	.4byte	0x111e
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3460,9 +3419,9 @@ ppm:
 	.byte	0x31
 	.byte	0
 	.byte	0x2b
-	.4byte	.LVL60
-	.4byte	0x171c
-	.4byte	0x114d
+	.4byte	.LVL57
+	.4byte	0x16d3
+	.4byte	0x1136
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3475,8 +3434,8 @@ ppm:
 	.byte	0x31
 	.byte	0
 	.byte	0x36
-	.4byte	.LVL61
-	.4byte	0x16df
+	.4byte	.LVL58
+	.4byte	0x1696
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3493,10 +3452,10 @@ ppm:
 	.4byte	.LFE32-.LFB32
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x118d
+	.4byte	0x1176
 	.byte	0x36
-	.4byte	.LVL57
-	.4byte	0x1728
+	.4byte	.LVL54
+	.4byte	0x16df
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3517,44 +3476,44 @@ ppm:
 	.byte	0x37
 	.4byte	.LASF199
 	.byte	0x2
-	.byte	0x82
+	.byte	0x7f
 	.byte	0xa
 	.4byte	0xa0
 	.byte	0x1
-	.4byte	0x11e3
+	.4byte	0x11cc
 	.byte	0x29
 	.4byte	.LASF197
 	.byte	0x2
-	.byte	0x84
+	.byte	0x81
 	.byte	0x13
-	.4byte	0x11e3
+	.4byte	0x11cc
 	.byte	0x5
 	.byte	0x3
 	.4byte	adc_data.4352
 	.byte	0x38
 	.string	"ctx"
 	.byte	0x2
-	.byte	0x86
+	.byte	0x83
 	.byte	0xe
-	.4byte	0x11f4
+	.4byte	0x11dd
 	.byte	0x38
 	.string	"sum"
 	.byte	0x2
-	.byte	0x92
+	.byte	0x8f
 	.byte	0xc
 	.4byte	0xa0
 	.byte	0x39
 	.byte	0x38
 	.string	"i"
 	.byte	0x2
-	.byte	0x93
+	.byte	0x90
 	.byte	0xc
 	.4byte	0x33
 	.byte	0x39
 	.byte	0x3a
 	.4byte	.LASF198
 	.byte	0x2
-	.byte	0x95
+	.byte	0x92
 	.byte	0xe
 	.4byte	0xa0
 	.byte	0
@@ -3562,7 +3521,7 @@ ppm:
 	.byte	0
 	.byte	0xc
 	.4byte	0xa0
-	.4byte	0x11f4
+	.4byte	0x11dd
 	.byte	0x2f
 	.4byte	0x2c
 	.2byte	0x3ff
@@ -3573,53 +3532,53 @@ ppm:
 	.byte	0x3b
 	.4byte	.LASF200
 	.byte	0x2
-	.byte	0x64
+	.byte	0x61
 	.byte	0x6
 	.byte	0x1
-	.4byte	0x122c
+	.4byte	0x1215
 	.byte	0x3c
 	.string	"pin"
 	.byte	0x2
-	.byte	0x64
+	.byte	0x61
 	.byte	0x17
 	.4byte	0x7a
 	.byte	0x3a
 	.4byte	.LASF201
 	.byte	0x2
-	.byte	0x7b
+	.byte	0x78
 	.byte	0x7
 	.4byte	0x33
 	.byte	0x38
 	.string	"ctx"
 	.byte	0x2
-	.byte	0x7c
+	.byte	0x79
 	.byte	0xe
-	.4byte	0x11f4
+	.4byte	0x11dd
 	.byte	0
 	.byte	0x3d
 	.4byte	.LASF238
 	.byte	0x2
-	.byte	0x46
+	.byte	0x43
 	.byte	0xc
 	.4byte	0x33
 	.byte	0x1
-	.4byte	0x1262
+	.4byte	0x124b
 	.byte	0x3e
 	.4byte	.LASF202
 	.byte	0x2
-	.byte	0x46
+	.byte	0x43
 	.byte	0x22
 	.4byte	0xa0
 	.byte	0x3e
 	.4byte	.LASF203
 	.byte	0x2
-	.byte	0x46
+	.byte	0x43
 	.byte	0x32
 	.4byte	0xa0
 	.byte	0x38
 	.string	"reg"
 	.byte	0x2
-	.byte	0x48
+	.byte	0x45
 	.byte	0xc
 	.4byte	0xa0
 	.byte	0
@@ -3632,7 +3591,7 @@ ppm:
 	.4byte	.LFE28-.LFB28
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x13ec
+	.4byte	0x13a3
 	.byte	0x30
 	.4byte	.LASF205
 	.byte	0x2
@@ -3640,27 +3599,27 @@ ppm:
 	.byte	0x15
 	.4byte	0xba
 	.4byte	.LLST11
-	.byte	0x31
-	.4byte	.Ldebug_ranges0+0x30
-	.4byte	0x1369
 	.byte	0x40
+	.4byte	.Ldebug_ranges0+0x48
+	.4byte	0x1352
+	.byte	0x41
 	.4byte	.LASF206
 	.byte	0x2
-	.byte	0x28
+	.byte	0x25
 	.byte	0xe
 	.4byte	0xa0
 	.4byte	.LLST13
-	.byte	0x40
+	.byte	0x41
 	.4byte	.LASF207
 	.byte	0x2
-	.byte	0x2a
+	.byte	0x27
 	.byte	0xc
 	.4byte	0x25
 	.4byte	.LLST14
 	.byte	0x29
 	.4byte	.LASF178
 	.byte	0x2
-	.byte	0x2c
+	.byte	0x29
 	.byte	0xc
 	.4byte	0x25
 	.byte	0x6
@@ -3670,74 +3629,74 @@ ppm:
 	.byte	0x6b
 	.byte	0x93
 	.byte	0x4
-	.byte	0x31
-	.4byte	.Ldebug_ranges0+0x48
-	.4byte	0x134e
+	.byte	0x40
+	.4byte	.Ldebug_ranges0+0x60
+	.4byte	0x1337
 	.byte	0x33
 	.string	"m"
 	.byte	0x2
-	.byte	0x35
+	.byte	0x32
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST15
 	.byte	0x33
 	.string	"b"
 	.byte	0x2
-	.byte	0x36
+	.byte	0x33
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST16
 	.byte	0x33
 	.string	"R0"
 	.byte	0x2
-	.byte	0x37
+	.byte	0x34
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST17
-	.byte	0x40
+	.byte	0x41
 	.4byte	.LASF208
 	.byte	0x2
-	.byte	0x38
+	.byte	0x35
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST18
-	.byte	0x40
+	.byte	0x41
 	.4byte	.LASF209
 	.byte	0x2
-	.byte	0x39
+	.byte	0x36
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST19
-	.byte	0x40
+	.byte	0x41
 	.4byte	.LASF210
 	.byte	0x2
-	.byte	0x3a
+	.byte	0x37
 	.byte	0xe
 	.4byte	0x25
 	.4byte	.LLST20
 	.byte	0x2d
-	.4byte	.LVL50
-	.4byte	0x1734
+	.4byte	.LVL47
+	.4byte	0x16eb
 	.byte	0x2d
-	.4byte	.LVL53
-	.4byte	0x1740
+	.4byte	.LVL50
+	.4byte	0x16f7
 	.byte	0x34
-	.4byte	.LVL55
-	.4byte	0x1703
+	.4byte	.LVL52
+	.4byte	0x16ba
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x5
 	.byte	0x3
-	.4byte	.LC13
+	.4byte	.LC11
 	.byte	0
 	.byte	0
 	.byte	0x2d
-	.4byte	.LVL40
-	.4byte	0x118d
+	.4byte	.LVL37
+	.4byte	0x1176
 	.byte	0x34
-	.4byte	.LVL56
-	.4byte	0x170f
+	.4byte	.LVL53
+	.4byte	0x16c6
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3746,59 +3705,36 @@ ppm:
 	.2byte	0x1388
 	.byte	0
 	.byte	0
-	.byte	0x41
-	.4byte	0x11fa
-	.4byte	.LBB22
-	.4byte	.LBE22-.LBB22
-	.byte	0x2
-	.byte	0x20
-	.byte	0x3
-	.4byte	0x13ac
 	.byte	0x42
-	.4byte	0x1207
-	.4byte	.LLST12
+	.4byte	0x11e3
+	.4byte	.LBB22
+	.4byte	.Ldebug_ranges0+0x30
+	.byte	0x2
+	.byte	0x1f
+	.byte	0x3
+	.4byte	0x1391
 	.byte	0x43
-	.4byte	.LBB23
-	.4byte	.LBE23-.LBB23
+	.4byte	0x11f0
+	.4byte	.LLST12
+	.byte	0x31
+	.4byte	.Ldebug_ranges0+0x30
 	.byte	0x44
-	.4byte	0x1213
+	.4byte	0x11fc
 	.byte	0x44
-	.4byte	0x121f
+	.4byte	0x1208
 	.byte	0x34
-	.4byte	.LVL37
-	.4byte	0x14a6
+	.4byte	.LVL35
+	.4byte	0x145d
 	.byte	0x45
-	.4byte	0x1207
+	.4byte	0x11f0
 	.byte	0x1
 	.byte	0x3e
 	.byte	0
 	.byte	0
 	.byte	0
-	.byte	0x2b
-	.4byte	.LVL36
-	.4byte	0x1703
-	.4byte	0x13c3
-	.byte	0x2c
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC2
-	.byte	0
-	.byte	0x2b
-	.4byte	.LVL38
-	.4byte	0x1703
-	.4byte	0x13da
-	.byte	0x2c
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC3
-	.byte	0
 	.byte	0x34
-	.4byte	.LVL39
-	.4byte	0x170f
+	.4byte	.LVL36
+	.4byte	0x16c6
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3816,11 +3752,11 @@ ppm:
 	.4byte	.LFE5-.LFB5
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x14a6
+	.4byte	0x145d
 	.byte	0x2b
 	.4byte	.LVL0
-	.4byte	0x1728
-	.4byte	0x141f
+	.4byte	0x16df
+	.4byte	0x13d6
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3839,8 +3775,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL1
-	.4byte	0x171c
-	.4byte	0x1437
+	.4byte	0x16d3
+	.4byte	0x13ee
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3854,8 +3790,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL3
-	.4byte	0x171c
-	.4byte	0x144f
+	.4byte	0x16d3
+	.4byte	0x1406
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3869,8 +3805,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL4
-	.4byte	0x170f
-	.4byte	0x1463
+	.4byte	0x16c6
+	.4byte	0x141a
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3880,8 +3816,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL5
-	.4byte	0x171c
-	.4byte	0x147c
+	.4byte	0x16d3
+	.4byte	0x1433
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3896,8 +3832,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL6
-	.4byte	0x170f
-	.4byte	0x1490
+	.4byte	0x16c6
+	.4byte	0x1447
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3907,7 +3843,7 @@ ppm:
 	.byte	0
 	.byte	0x34
 	.4byte	.LVL7
-	.4byte	0x171c
+	.4byte	0x16d3
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3922,50 +3858,50 @@ ppm:
 	.byte	0
 	.byte	0
 	.byte	0x47
-	.4byte	0x11fa
+	.4byte	0x11e3
 	.4byte	.LFB36
 	.4byte	.LFE36-.LFB36
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x15a0
+	.4byte	0x1557
 	.byte	0x48
-	.4byte	0x1213
+	.4byte	0x11fc
 	.4byte	.LLST0
 	.byte	0x48
-	.4byte	0x121f
+	.4byte	0x1208
 	.4byte	.LLST1
 	.byte	0x49
-	.4byte	0x1207
+	.4byte	0x11f0
 	.byte	0x6
 	.byte	0xfa
-	.4byte	0x1207
+	.4byte	0x11f0
 	.byte	0x9f
-	.byte	0x41
-	.4byte	0x122c
+	.byte	0x4a
+	.4byte	0x1215
 	.4byte	.LBB10
 	.4byte	.LBE10-.LBB10
 	.byte	0x2
-	.byte	0x75
+	.byte	0x72
 	.byte	0x3
-	.4byte	0x1511
-	.byte	0x42
-	.4byte	0x123d
-	.4byte	.LLST2
-	.byte	0x42
-	.4byte	0x1249
+	.4byte	0x14c8
+	.byte	0x43
+	.4byte	0x1226
 	.4byte	.LLST2
 	.byte	0x43
+	.4byte	0x1232
+	.4byte	.LLST2
+	.byte	0x4b
 	.4byte	.LBB11
 	.4byte	.LBE11-.LBB11
 	.byte	0x48
-	.4byte	0x1255
+	.4byte	0x123e
 	.4byte	.LLST4
 	.byte	0
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL9
-	.4byte	0x174c
-	.4byte	0x152b
+	.4byte	0x1703
+	.4byte	0x14e2
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3980,8 +3916,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL10
-	.4byte	0x1758
-	.4byte	0x1543
+	.4byte	0x170f
+	.4byte	0x14fa
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -3995,8 +3931,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL15
-	.4byte	0x1764
-	.4byte	0x155d
+	.4byte	0x171b
+	.4byte	0x1514
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4011,8 +3947,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL16
-	.4byte	0x1770
-	.4byte	0x1570
+	.4byte	0x1727
+	.4byte	0x1527
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4021,8 +3957,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL17
-	.4byte	0x177c
-	.4byte	0x1583
+	.4byte	0x1733
+	.4byte	0x153a
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4031,8 +3967,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL19
-	.4byte	0x1788
-	.4byte	0x1596
+	.4byte	0x173f
+	.4byte	0x154d
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4041,26 +3977,26 @@ ppm:
 	.byte	0
 	.byte	0x2e
 	.4byte	.LVL21
-	.4byte	0x1794
+	.4byte	0x174b
 	.byte	0
 	.byte	0x47
-	.4byte	0x11fa
+	.4byte	0x11e3
 	.4byte	.LFB30
 	.4byte	.LFE30-.LFB30
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x15ef
-	.byte	0x42
-	.4byte	0x1207
+	.4byte	0x15a6
+	.byte	0x43
+	.4byte	0x11f0
 	.4byte	.LLST5
 	.byte	0x44
-	.4byte	0x1213
+	.4byte	0x11fc
 	.byte	0x44
-	.4byte	0x121f
-	.byte	0x4a
+	.4byte	0x1208
+	.byte	0x4c
 	.4byte	.LVL24
-	.4byte	0x1703
-	.4byte	0x15dd
+	.4byte	0x16ba
+	.4byte	0x1594
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4070,53 +4006,53 @@ ppm:
 	.byte	0
 	.byte	0x36
 	.4byte	.LVL25
-	.4byte	0x14a6
+	.4byte	0x145d
 	.byte	0x45
-	.4byte	0x1207
+	.4byte	0x11f0
 	.byte	0x1
 	.byte	0x3e
 	.byte	0
 	.byte	0
 	.byte	0x47
-	.4byte	0x118d
+	.4byte	0x1176
 	.4byte	.LFB31
 	.4byte	.LFE31-.LFB31
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x1695
+	.4byte	0x164c
 	.byte	0x48
-	.4byte	0x11b0
+	.4byte	0x1199
 	.4byte	.LLST6
 	.byte	0x48
-	.4byte	0x11bc
+	.4byte	0x11a5
 	.4byte	.LLST7
-	.byte	0x41
-	.4byte	0x118d
+	.byte	0x4a
+	.4byte	0x1176
 	.4byte	.LBB16
 	.4byte	.LBE16-.LBB16
 	.byte	0x2
-	.byte	0x82
+	.byte	0x7f
 	.byte	0xa
-	.4byte	0x1667
-	.byte	0x43
+	.4byte	0x161e
+	.byte	0x4b
 	.4byte	.LBB17
 	.4byte	.LBE17-.LBB17
 	.byte	0x44
-	.4byte	0x11b0
+	.4byte	0x1199
 	.byte	0x48
-	.4byte	0x11bc
+	.4byte	0x11a5
 	.4byte	.LLST8
-	.byte	0x4b
-	.4byte	0x11c8
+	.byte	0x4d
+	.4byte	0x11b1
 	.4byte	.Ldebug_ranges0+0
 	.byte	0x48
-	.4byte	0x11c9
+	.4byte	0x11b2
 	.4byte	.LLST9
-	.byte	0x4b
-	.4byte	0x11d3
+	.byte	0x4d
+	.4byte	0x11bc
 	.4byte	.Ldebug_ranges0+0x18
 	.byte	0x48
-	.4byte	0x11d4
+	.4byte	0x11bd
 	.4byte	.LLST10
 	.byte	0
 	.byte	0
@@ -4124,8 +4060,8 @@ ppm:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL26
-	.4byte	0x1788
-	.4byte	0x167a
+	.4byte	0x173f
+	.4byte	0x1631
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4134,7 +4070,7 @@ ppm:
 	.byte	0
 	.byte	0x34
 	.4byte	.LVL28
-	.4byte	0x17a0
+	.4byte	0x1757
 	.byte	0x2c
 	.byte	0x1
 	.byte	0x5a
@@ -4149,139 +4085,139 @@ ppm:
 	.2byte	0x1000
 	.byte	0
 	.byte	0
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF212
 	.4byte	.LASF212
 	.byte	0x12
 	.byte	0x26
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF213
 	.4byte	.LASF213
 	.byte	0x8
 	.byte	0x8b
 	.byte	0x6
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF214
 	.4byte	.LASF214
 	.byte	0x13
 	.byte	0x46
 	.byte	0x6
-	.byte	0x4d
+	.byte	0x4f
 	.4byte	.LASF215
 	.4byte	.LASF215
 	.byte	0x14
 	.2byte	0x1be
 	.byte	0x12
-	.byte	0x4d
+	.byte	0x4f
 	.4byte	.LASF216
 	.4byte	.LASF216
 	.byte	0x14
 	.2byte	0x497
 	.byte	0x6
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF217
 	.4byte	.LASF217
 	.byte	0x15
 	.byte	0x30
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF218
 	.4byte	.LASF218
 	.byte	0x16
 	.byte	0x22
 	.byte	0x6
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF219
 	.4byte	.LASF219
 	.byte	0x15
 	.byte	0x2d
 	.byte	0x5
-	.byte	0x4e
+	.byte	0x50
 	.string	"abs"
 	.string	"abs"
 	.byte	0x11
 	.byte	0x46
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF220
 	.4byte	.LASF220
 	.byte	0x17
 	.byte	0xc8
 	.byte	0x5
-	.byte	0x4d
+	.byte	0x4f
 	.4byte	.LASF221
 	.4byte	.LASF221
 	.byte	0x14
 	.2byte	0x2f6
 	.byte	0x6
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF222
 	.4byte	.LASF222
 	.byte	0x15
 	.byte	0x2e
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF223
 	.4byte	.LASF223
 	.byte	0x15
 	.byte	0x2c
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF224
 	.4byte	.LASF224
 	.byte	0xd
 	.byte	0x6e
 	.byte	0xf
-	.byte	0x4e
+	.byte	0x50
 	.string	"pow"
 	.string	"pow"
 	.byte	0xd
 	.byte	0x6f
 	.byte	0xf
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF225
 	.4byte	.LASF225
 	.byte	0x10
 	.byte	0x3a
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF226
 	.4byte	.LASF226
 	.byte	0x10
 	.byte	0x35
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF227
 	.4byte	.LASF227
 	.byte	0x10
 	.byte	0x36
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF228
 	.4byte	.LASF228
 	.byte	0x10
 	.byte	0x38
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF229
 	.4byte	.LASF229
 	.byte	0x10
 	.byte	0x39
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF230
 	.4byte	.LASF230
 	.byte	0x13
 	.byte	0x4e
 	.byte	0x7
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF231
 	.4byte	.LASF231
 	.byte	0x10
 	.byte	0x37
 	.byte	0x5
-	.byte	0x4c
+	.byte	0x4e
 	.4byte	.LASF232
 	.4byte	.LASF232
 	.byte	0x18
@@ -4957,8 +4893,6 @@ ppm:
 	.byte	0x1
 	.byte	0x55
 	.byte	0x17
-	.byte	0x1
-	.byte	0x13
 	.byte	0
 	.byte	0
 	.byte	0x32
@@ -5190,6 +5124,15 @@ ppm:
 	.byte	0
 	.byte	0
 	.byte	0x40
+	.byte	0xb
+	.byte	0x1
+	.byte	0x55
+	.byte	0x17
+	.byte	0x1
+	.byte	0x13
+	.byte	0
+	.byte	0
+	.byte	0x41
 	.byte	0x34
 	.byte	0
 	.byte	0x3
@@ -5206,15 +5149,15 @@ ppm:
 	.byte	0x17
 	.byte	0
 	.byte	0
-	.byte	0x41
+	.byte	0x42
 	.byte	0x1d
 	.byte	0x1
 	.byte	0x31
 	.byte	0x13
-	.byte	0x11
+	.byte	0x52
 	.byte	0x1
-	.byte	0x12
-	.byte	0x6
+	.byte	0x55
+	.byte	0x17
 	.byte	0x58
 	.byte	0xb
 	.byte	0x59
@@ -5225,22 +5168,13 @@ ppm:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0x42
+	.byte	0x43
 	.byte	0x5
 	.byte	0
 	.byte	0x31
 	.byte	0x13
 	.byte	0x2
 	.byte	0x17
-	.byte	0
-	.byte	0
-	.byte	0x43
-	.byte	0xb
-	.byte	0x1
-	.byte	0x11
-	.byte	0x1
-	.byte	0x12
-	.byte	0x6
 	.byte	0
 	.byte	0
 	.byte	0x44
@@ -5320,6 +5254,34 @@ ppm:
 	.byte	0
 	.byte	0
 	.byte	0x4a
+	.byte	0x1d
+	.byte	0x1
+	.byte	0x31
+	.byte	0x13
+	.byte	0x11
+	.byte	0x1
+	.byte	0x12
+	.byte	0x6
+	.byte	0x58
+	.byte	0xb
+	.byte	0x59
+	.byte	0xb
+	.byte	0x57
+	.byte	0xb
+	.byte	0x1
+	.byte	0x13
+	.byte	0
+	.byte	0
+	.byte	0x4b
+	.byte	0xb
+	.byte	0x1
+	.byte	0x11
+	.byte	0x1
+	.byte	0x12
+	.byte	0x6
+	.byte	0
+	.byte	0
+	.byte	0x4c
 	.byte	0x89,0x82,0x1
 	.byte	0x1
 	.byte	0x11
@@ -5332,7 +5294,7 @@ ppm:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0x4b
+	.byte	0x4d
 	.byte	0xb
 	.byte	0x1
 	.byte	0x31
@@ -5341,7 +5303,7 @@ ppm:
 	.byte	0x17
 	.byte	0
 	.byte	0
-	.byte	0x4c
+	.byte	0x4e
 	.byte	0x2e
 	.byte	0
 	.byte	0x3f
@@ -5360,7 +5322,7 @@ ppm:
 	.byte	0xb
 	.byte	0
 	.byte	0
-	.byte	0x4d
+	.byte	0x4f
 	.byte	0x2e
 	.byte	0
 	.byte	0x3f
@@ -5379,7 +5341,7 @@ ppm:
 	.byte	0xb
 	.byte	0
 	.byte	0
-	.byte	0x4e
+	.byte	0x50
 	.byte	0x2e
 	.byte	0
 	.byte	0x3f
@@ -5402,11 +5364,11 @@ ppm:
 	.section	.debug_loc,"",@progbits
 .Ldebug_loc0:
 .LLST21:
-	.4byte	.LVL62
-	.4byte	.LVL63
+	.4byte	.LVL59
+	.4byte	.LVL60
 	.2byte	0x1
 	.byte	0x5a
-	.4byte	.LVL63
+	.4byte	.LVL60
 	.4byte	.LFE34
 	.2byte	0x4
 	.byte	0xf3
@@ -5416,11 +5378,11 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST22:
-	.4byte	.LVL75
-	.4byte	.LVL77
+	.4byte	.LVL71
+	.4byte	.LVL73
 	.2byte	0x1
 	.byte	0x68
-	.4byte	.LVL83
+	.4byte	.LVL79
 	.4byte	.LFE34
 	.2byte	0x1
 	.byte	0x68
@@ -5428,10 +5390,10 @@ ppm:
 	.4byte	0
 .LLST11:
 	.4byte	.LVL34
-	.4byte	.LVL35
+	.4byte	.LVL35-1
 	.2byte	0x1
 	.byte	0x5a
-	.4byte	.LVL35
+	.4byte	.LVL35-1
 	.4byte	.LFE28
 	.2byte	0x4
 	.byte	0xf3
@@ -5441,15 +5403,15 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST13:
-	.4byte	.LVL40
-	.4byte	.LVL41-1
+	.4byte	.LVL37
+	.4byte	.LVL38-1
 	.2byte	0x1
 	.byte	0x5a
 	.4byte	0
 	.4byte	0
 .LLST14:
-	.4byte	.LVL40
-	.4byte	.LVL41-1
+	.4byte	.LVL37
+	.4byte	.LVL38-1
 	.2byte	0x13
 	.byte	0x7a
 	.byte	0
@@ -5467,8 +5429,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST15:
-	.4byte	.LVL46
-	.4byte	.LVL55
+	.4byte	.LVL43
+	.4byte	.LVL52
 	.2byte	0xa
 	.byte	0x9e
 	.byte	0x8
@@ -5477,8 +5439,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST16:
-	.4byte	.LVL46
-	.4byte	.LVL55
+	.4byte	.LVL43
+	.4byte	.LVL52
 	.2byte	0xa
 	.byte	0x9e
 	.byte	0x8
@@ -5487,8 +5449,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST17:
-	.4byte	.LVL46
-	.4byte	.LVL55
+	.4byte	.LVL43
+	.4byte	.LVL52
 	.2byte	0xa
 	.byte	0x9e
 	.byte	0x8
@@ -5497,8 +5459,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST18:
-	.4byte	.LVL46
-	.4byte	.LVL55
+	.4byte	.LVL43
+	.4byte	.LVL52
 	.2byte	0x1c
 	.byte	0xf4
 	.byte	0x25
@@ -5519,8 +5481,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST19:
-	.4byte	.LVL46
-	.4byte	.LVL55
+	.4byte	.LVL43
+	.4byte	.LVL52
 	.2byte	0x28
 	.byte	0xf4
 	.byte	0x25
@@ -5547,8 +5509,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST20:
-	.4byte	.LVL50
-	.4byte	.LVL51-1
+	.4byte	.LVL47
+	.4byte	.LVL48-1
 	.2byte	0x1c
 	.byte	0xf5
 	.byte	0xa
@@ -5569,8 +5531,8 @@ ppm:
 	.4byte	0
 	.4byte	0
 .LLST12:
-	.4byte	.LVL36
-	.4byte	.LVL37
+	.4byte	.LVL34
+	.4byte	.LVL35
 	.2byte	0x2
 	.byte	0x3e
 	.byte	0x9f
@@ -5775,26 +5737,30 @@ ppm:
 	.4byte	.LBE20
 	.4byte	0
 	.4byte	0
-	.4byte	.LBB24
-	.4byte	.LBE24
-	.4byte	.LBB27
-	.4byte	.LBE27
-	.4byte	0
-	.4byte	0
+	.4byte	.LBB22
+	.4byte	.LBE22
 	.4byte	.LBB25
 	.4byte	.LBE25
+	.4byte	0
+	.4byte	0
 	.4byte	.LBB26
 	.4byte	.LBE26
+	.4byte	.LBB29
+	.4byte	.LBE29
 	.4byte	0
 	.4byte	0
+	.4byte	.LBB27
+	.4byte	.LBE27
 	.4byte	.LBB28
 	.4byte	.LBE28
+	.4byte	0
+	.4byte	0
 	.4byte	.LBB30
 	.4byte	.LBE30
-	.4byte	.LBB31
-	.4byte	.LBE31
 	.4byte	.LBB32
 	.4byte	.LBE32
+	.4byte	.LBB33
+	.4byte	.LBE33
 	.4byte	0
 	.4byte	0
 	.4byte	.LFB5

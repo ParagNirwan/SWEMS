@@ -27,11 +27,8 @@ uint32_t read_adc();
 
 void task_mq4(void *pvParameters)
 {
-  printf("MQ4 task started\r\n");
 
   init_adc(MQ4_SENSOR_PIN);
-
-  printf("MQ4 Sensor initialized\r\n");
 
   vTaskDelay(2000 / portTICK_PERIOD_MS);
 
@@ -58,7 +55,7 @@ void task_mq4(void *pvParameters)
       double ppm_log = (log10(ratio) - b) / m;
       ppm = pow(10, ppm_log) + 200;
 
-      printf(MAGENTA "Gas ppm = %f\r\n", pp0);
+      printf(MAGENTA "Gas ppm = %f\r\n", ppm);
       // double percentage = ppm / 10000;
     }
     vTaskDelay(5000 / portTICK_PERIOD_MS);
