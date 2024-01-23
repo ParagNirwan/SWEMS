@@ -301,19 +301,14 @@ task_dht:
 	call	printf
 .LVL24:
 	.loc 1 93 5
-	li	a0,4096
-	addi	a0,a0,904
+	li	a0,8192
+	addi	a0,a0,1808
 	call	vTaskDelay
 .LVL25:
-	.loc 1 94 5
-	lui	a0,%hi(.LC5)
-	addi	a0,a0,%lo(.LC5)
-	call	printf
-.LVL26:
 .LBE5:
 	.loc 1 35 3 is_stmt 0
 	j	.L16
-.LVL27:
+.LVL26:
 .L13:
 .LBB6:
 	.loc 1 80 9 is_stmt 1
@@ -329,7 +324,7 @@ task_dht:
 	addi	a0,s6,%lo(.LC2)
 	div	a1,a1,s0
 	call	printf
-.LVL28:
+.LVL27:
 	.loc 1 89 7
 	lhu	a1,%lo(humidity)(s2)
 	remu	a2,a1,s0
@@ -356,9 +351,6 @@ task_dht:
 	.string	"\033[33mHumidity: %d.%d \r\n"
 .LC4:
 	.string	"\033[0m"
-	.zero	3
-.LC5:
-	.string	"\033[1;1H\033[2J"
 	.text
 .Letext0:
 	.file 2 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stdint-gcc.h"
@@ -374,7 +366,7 @@ task_dht:
 	.file 12 "/home/parag/bl_iot_sdk/components/bl602/freertos_riscv_ram/config/task.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0xcb2
+	.4byte	0xc9b
 	.2byte	0x4
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -1629,7 +1621,7 @@ task_dht:
 	.4byte	.LFE6-.LFB6
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xbab
+	.4byte	0xb94
 	.byte	0x23
 	.4byte	.LASF147
 	.byte	0x1
@@ -1639,13 +1631,13 @@ task_dht:
 	.4byte	.LLST0
 	.byte	0x24
 	.4byte	.Ldebug_ranges0+0
-	.4byte	0xb97
+	.4byte	0xb80
 	.byte	0x25
 	.4byte	.LASF131
 	.byte	0x1
 	.byte	0x25
 	.byte	0xd
-	.4byte	0xbab
+	.4byte	0xb94
 	.byte	0x2
 	.byte	0x91
 	.byte	0x48
@@ -1671,7 +1663,7 @@ task_dht:
 	.4byte	.LLST1
 	.byte	0x28
 	.4byte	.LVL14
-	.4byte	0xc54
+	.4byte	0xc3d
 	.4byte	0xa25
 	.byte	0x29
 	.byte	0x1
@@ -1681,7 +1673,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL15
-	.4byte	0xc60
+	.4byte	0xc49
 	.4byte	0xa38
 	.byte	0x29
 	.byte	0x1
@@ -1691,7 +1683,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL16
-	.4byte	0xc54
+	.4byte	0xc3d
 	.4byte	0xa4b
 	.byte	0x29
 	.byte	0x1
@@ -1701,7 +1693,7 @@ task_dht:
 	.byte	0
 	.byte	0x2a
 	.4byte	.LVL17
-	.4byte	0xc54
+	.4byte	0xc3d
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1711,13 +1703,13 @@ task_dht:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL8
-	.4byte	0xc24
+	.4byte	0xc0d
 	.byte	0x2b
 	.4byte	.LVL9
-	.4byte	0xbbb
+	.4byte	0xba4
 	.byte	0x28
 	.4byte	.LVL10
-	.4byte	0xc6c
+	.4byte	0xc55
 	.4byte	0xa90
 	.byte	0x29
 	.byte	0x1
@@ -1743,7 +1735,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL11
-	.4byte	0xc54
+	.4byte	0xc3d
 	.4byte	0xaa3
 	.byte	0x29
 	.byte	0x1
@@ -1753,7 +1745,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL12
-	.4byte	0xc54
+	.4byte	0xc3d
 	.4byte	0xab6
 	.byte	0x29
 	.byte	0x1
@@ -1763,7 +1755,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL13
-	.4byte	0xc54
+	.4byte	0xc3d
 	.4byte	0xac9
 	.byte	0x29
 	.byte	0x1
@@ -1773,7 +1765,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL21
-	.4byte	0xc78
+	.4byte	0xc61
 	.4byte	0xae4
 	.byte	0x29
 	.byte	0x1
@@ -1791,10 +1783,10 @@ task_dht:
 	.byte	0
 	.byte	0x2b
 	.4byte	.LVL22
-	.4byte	0xc84
+	.4byte	0xc6d
 	.byte	0x28
 	.4byte	.LVL23
-	.4byte	0xc84
+	.4byte	0xc6d
 	.4byte	0xb04
 	.byte	0x29
 	.byte	0x1
@@ -1805,7 +1797,7 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL24
-	.4byte	0xc84
+	.4byte	0xc6d
 	.4byte	0xb1b
 	.byte	0x29
 	.byte	0x1
@@ -1816,29 +1808,18 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL25
-	.4byte	0xc90
+	.4byte	0xc79
 	.4byte	0xb30
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
 	.byte	0x3
 	.byte	0xa
-	.2byte	0x1388
-	.byte	0
-	.byte	0x28
-	.4byte	.LVL26
-	.4byte	0xc84
-	.4byte	0xb47
-	.byte	0x29
-	.byte	0x1
-	.byte	0x5a
-	.byte	0x5
-	.byte	0x3
-	.4byte	.LC5
+	.2byte	0x2710
 	.byte	0
 	.byte	0x2a
-	.4byte	.LVL28
-	.4byte	0xc84
+	.4byte	.LVL27
+	.4byte	0xc6d
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1909,7 +1890,7 @@ task_dht:
 	.byte	0
 	.byte	0x2a
 	.4byte	.LVL7
-	.4byte	0xc84
+	.4byte	0xc6d
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1920,7 +1901,7 @@ task_dht:
 	.byte	0
 	.byte	0xc
 	.4byte	0x67
-	.4byte	0xbbb
+	.4byte	0xba4
 	.byte	0xd
 	.4byte	0x2c
 	.byte	0x4
@@ -1934,11 +1915,11 @@ task_dht:
 	.4byte	.LFE5-.LFB5
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xc24
+	.4byte	0xc0d
 	.byte	0x28
 	.4byte	.LVL1
-	.4byte	0xc9d
-	.4byte	0xbe9
+	.4byte	0xc86
+	.4byte	0xbd2
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1952,8 +1933,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL2
-	.4byte	0xc90
-	.4byte	0xbfc
+	.4byte	0xc79
+	.4byte	0xbe5
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1962,8 +1943,8 @@ task_dht:
 	.byte	0
 	.byte	0x28
 	.4byte	.LVL3
-	.4byte	0xc9d
-	.4byte	0xc14
+	.4byte	0xc86
+	.4byte	0xbfd
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1977,7 +1958,7 @@ task_dht:
 	.byte	0
 	.byte	0x2d
 	.4byte	.LVL4
-	.4byte	0xc60
+	.4byte	0xc49
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -1994,10 +1975,10 @@ task_dht:
 	.4byte	.LFE4-.LFB4
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xc54
+	.4byte	0xc3d
 	.byte	0x2d
 	.4byte	.LVL0
-	.4byte	0xca9
+	.4byte	0xc92
 	.byte	0x29
 	.byte	0x1
 	.byte	0x5a
@@ -2772,7 +2753,7 @@ task_dht:
 	.4byte	.LVL20
 	.2byte	0x1
 	.byte	0x68
-	.4byte	.LVL27
+	.4byte	.LVL26
 	.4byte	.LFE6
 	.2byte	0x1
 	.byte	0x68

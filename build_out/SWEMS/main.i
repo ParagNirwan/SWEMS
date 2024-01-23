@@ -2409,7 +2409,7 @@ void task_buzzer()
 
     while (1)
     {
-        if (ppm >= 40 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 80)
+        if (ppm >= 300 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 60)
         {
 
 
@@ -3913,19 +3913,18 @@ void task_mq4(void *pvParameters)
       double RS_gas = ((5.0 * 1.0) / sensor_volt) - 1.0;
       double ratio = RS_gas / R0;
       double ppm_log = (log10(ratio) - b) / m;
-      ppm = pow(10, ppm_log);
+      ppm = pow(10, ppm_log) + 200;
 
       printf("\x1B[35m" "Gas ppm = %f\r\n", ppm);
 
     }
     vTaskDelay(5000 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
-    printf("\e[1;1H\e[2J");
   }
 
   vTaskDelete(
-# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
              ((void *)0)
-# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                  );
 }
 
@@ -3996,9 +3995,9 @@ uint32_t read_adc()
   adc_ctx_t *ctx = bl_dma_find_ctx_by_channel(1);
 
   if (ctx->channel_data == 
-# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
                           ((void *)0)
-# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                               )
   {
     return 0;
@@ -4395,14 +4394,13 @@ void task_dht(void *pvParameters)
       printf("\x1B[0m");
     }
 
-    vTaskDelay(5000 / ((TickType_t)1000 / ((TickType_t)1000)));
-    printf("\e[1;1H\e[2J");
+    vTaskDelay(10000 / ((TickType_t)1000 / ((TickType_t)1000)));
   }
 
   vTaskDelete(
-# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 3 4
+# 96 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 3 4
              ((void *)0)
-# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
+# 96 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
                  );
 }
 # 6 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c" 2
@@ -4864,64 +4862,64 @@ void bfl_main(void)
 
 
 
-  bl_uart_init(0, 16, 7, 255, 255, 2 * 1000 * 1000);
+    bl_uart_init(0, 16, 7, 255, 255, 2 * 1000 * 1000);
 
 
-  vPortDefineHeapRegions(xHeapRegions);
+    vPortDefineHeapRegions(xHeapRegions);
 
 
-  bl_dma_init();
+    bl_dma_init();
 
 
-  static StackType_t mq4_stack[512];
-  static StaticTask_t mq4_task;
+    static StackType_t mq4_stack[512];
+    static StaticTask_t mq4_task;
 
-  static StackType_t buzzer_stack[128];
-  static StaticTask_t buzzer_task;
+    static StackType_t buzzer_stack[128];
+    static StaticTask_t buzzer_task;
 
 
-  static StackType_t dht_stack[768];
-  static StaticTask_t dht_task;
+    static StackType_t dht_stack[768];
+    static StaticTask_t dht_task;
 
-  xTaskCreateStatic(
-      task_mq4,
-      (char *)"mq4",
-      512,
-      
+    xTaskCreateStatic(
+        task_mq4,
+        (char *)"mq4",
+        512,
+        
 # 63 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c" 3 4
-     ((void *)0)
+       ((void *)0)
 # 63 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c"
-         ,
-      15,
-      mq4_stack,
-      &mq4_task);
+           ,
+        15,
+        mq4_stack,
+        &mq4_task);
 
-  xTaskCreateStatic(
-      task_buzzer,
-      (char *)"buzzer",
-      128,
-      
+    xTaskCreateStatic(
+        task_buzzer,
+        (char *)"buzzer",
+        128,
+        
 # 72 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c" 3 4
-     ((void *)0)
+       ((void *)0)
 # 72 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c"
-         ,
-      10,
-      buzzer_stack,
-      &buzzer_task);
-  xTaskCreateStatic(
-      task_dht,
-      (char *)"dht",
-      768,
-      
+           ,
+        10,
+        buzzer_stack,
+        &buzzer_task);
+    xTaskCreateStatic(
+        task_dht,
+        (char *)"dht",
+        768,
+        
 # 80 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c" 3 4
-     ((void *)0)
+       ((void *)0)
 # 80 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/main.c"
-         ,
-      20,
-      dht_stack,
-      &dht_task
-  );
+           ,
+        30,
+        dht_stack,
+        &dht_task
+    );
 
 
-  vTaskStartScheduler();
+    vTaskStartScheduler();
 }

@@ -28,7 +28,7 @@ void task_buzzer()
 
     while (1)
     {
-        if (ppm >= 40 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 80)
+        if (ppm >= 300 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 60)
         {
 
             // Turn on the buzzer

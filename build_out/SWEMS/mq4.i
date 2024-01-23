@@ -2405,7 +2405,7 @@ void task_buzzer()
 
     while (1)
     {
-        if (ppm >= 40 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 80)
+        if (ppm >= 300 || (temp / 10) > 40 || (temp / 10) < 10 || (humidity / 10) >= 60)
         {
 
 
@@ -3909,19 +3909,18 @@ void task_mq4(void *pvParameters)
       double RS_gas = ((5.0 * 1.0) / sensor_volt) - 1.0;
       double ratio = RS_gas / R0;
       double ppm_log = (log10(ratio) - b) / m;
-      ppm = pow(10, ppm_log);
+      ppm = pow(10, ppm_log) + 200;
 
       printf("\x1B[35m" "Gas ppm = %f\r\n", ppm);
 
     }
     vTaskDelay(5000 / ( ( TickType_t ) 1000 / ( ( TickType_t ) 1000 ) ));
-    printf("\e[1;1H\e[2J");
   }
 
   vTaskDelete(
-# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
              ((void *)0)
-# 68 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 67 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                  );
 }
 
@@ -3992,9 +3991,9 @@ uint32_t read_adc()
   adc_ctx_t *ctx = bl_dma_find_ctx_by_channel(1);
 
   if (ctx->channel_data == 
-# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
+# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c" 3 4
                           ((void *)0)
-# 137 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
+# 136 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/mq4.c"
                               )
   {
     return 0;

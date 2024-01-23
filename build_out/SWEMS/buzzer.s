@@ -55,14 +55,14 @@ task_buzzer:
 	lw	s3,%lo(.LC0+4)(a5)
 	.loc 1 31 17
 	lui	s0,%hi(ppm)
-	.loc 1 31 38
+	.loc 1 31 39
 	lui	s1,%hi(temp)
-	.loc 1 31 43
+	.loc 1 31 44
 	li	s4,309
-	.loc 1 31 82
+	.loc 1 31 83
 	lui	s5,%hi(humidity)
-	.loc 1 31 63
-	li	s6,799
+	.loc 1 31 64
+	li	s6,599
 .L2:
 	.loc 1 29 5 is_stmt 1
 	.loc 1 31 9
@@ -74,13 +74,13 @@ task_buzzer:
 	call	__gedf2
 .LVL2:
 	bge	a0,zero,.L3
-	.loc 1 31 43 discriminator 1
+	.loc 1 31 44 discriminator 1
 	lhu	a5,%lo(temp)(s1)
 	addi	a5,a5,-100
 	slli	a5,a5,16
 	srli	a5,a5,16
 	bgtu	a5,s4,.L3
-	.loc 1 31 63 discriminator 3
+	.loc 1 31 64 discriminator 3
 	lhu	a5,%lo(humidity)(s5)
 	bleu	a5,s6,.L4
 .L3:
@@ -117,7 +117,7 @@ task_buzzer:
 	.align	3
 .LC0:
 	.word	0
-	.word	1078198272
+	.word	1081262080
 	.text
 .Letext0:
 	.file 2 "/home/parag/bl_iot_sdk/toolchain/riscv/Linux/lib/gcc/riscv64-unknown-elf/8.3.0/include/stdint-gcc.h"

@@ -2294,13 +2294,12 @@ void task_dht(void *pvParameters)
       printf("\x1B[0m");
     }
 
-    vTaskDelay(5000 / ((TickType_t)1000 / ((TickType_t)1000)));
-    printf("\e[1;1H\e[2J");
+    vTaskDelay(10000 / ((TickType_t)1000 / ((TickType_t)1000)));
   }
 
   vTaskDelete(
-# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 3 4
+# 96 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c" 3 4
              ((void *)0)
-# 97 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
+# 96 "/home/parag/bl_iot_sdk/customer_app/SWEMS/SWEMS/dht.c"
                  );
 }

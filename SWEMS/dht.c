@@ -90,8 +90,7 @@ void task_dht(void *pvParameters)
       printf(RESET);
     }
 
-    vTaskDelay(5000 / ((TickType_t)1000 / ((TickType_t)1000)));
-    printf("\e[1;1H\e[2J");
+    vTaskDelay(10000 / ((TickType_t)1000 / ((TickType_t)1000)));
   }
 
   vTaskDelete(NULL);

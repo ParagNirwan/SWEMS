@@ -56,13 +56,12 @@ void task_mq4(void *pvParameters)
       double RS_gas = ((5.0 * 1.0) / sensor_volt) - 1.0;
       double ratio = RS_gas / R0;
       double ppm_log = (log10(ratio) - b) / m;
-      ppm = pow(10, ppm_log);
+      ppm = pow(10, ppm_log) + 200;
 
-      printf(MAGENTA "Gas ppm = %f\r\n", ppm);
+      printf(MAGENTA "Gas ppm = %f\r\n", pp0);
       // double percentage = ppm / 10000;
     }
     vTaskDelay(5000 / portTICK_PERIOD_MS);
-    printf("\e[1;1H\e[2J");
   }
 
   vTaskDelete(NULL);
