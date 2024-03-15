@@ -3,14 +3,17 @@
 #include <task.h>
 #include "mq4.c"
 #include "dht.c"
-// Input/Output
-#include <stdio.h>
-
-// UART library
-#include <bl_uart.h>
-
-// DMA library
 #include <bl_dma.h>
+#include <bl_irq.h>
+#include <bl_sec.h>
+#include <bl_sys_time.h>
+#include <bl_uart.h>
+#include <hal_boot2.h>
+#include <hal_board.h>
+#include <hal_hwtimer.h>
+
+#include <blog.h>
+#include <lwip/tcpip.h>
 
 int buzz = 0;
 /* Define heap regions */
@@ -37,14 +40,6 @@ void bfl_main(void)
      * Ports: 16+7 (TX+RX)
      * Baudrate: 2 million
      */
-    bl_uart_init(0, 16, 7, 255, 255, 2 * 1000 * 1000);
-
-    /* (Re)define Heap */
-    vPortDefineHeapRegions(xHeapRegions);
-
-    /* Initialize DMA */
-    bl_dma_init();
-
     /* Set up ADC reading task */
     static StackType_t mq4_stack[MQ4_STACK_SIZE];
     static StaticTask_t mq4_task;
@@ -55,6 +50,42 @@ void bfl_main(void)
     /* Set up DHT task */
     static StackType_t dht_stack[DHT_STACK_SIZE];
     static StaticTask_t dht_task;
+
+    static StackType_t wifi_stack[1024];
+    static StaticTask_t wifi_task;
+
+    #if WIFI_MODE_PINECONE == WIFI_MODE_STA
+    static StackType_t httpc_stack[8192];
+    static StaticTask_t httpc_task;
+    /*     static StackType_t http_stack[1024];
+    static StaticTask_t http_task; */
+    #endif
+
+    bl_uart_init(0, 16, 7, 255, 255, 2 * 1000 * 1000);
+
+    /* (Re)define Heap */
+    vPortDefineHeapRegions(xHeapRegions);
+
+    /* Initialize DMA */
+    blog_init();
+    bl_irq_init();
+    bl_sec_init();
+    bl_dma_init();
+    hal_boot2_init();
+    hal_board_cfg(0);
+
+
+    #if WIFI_MODE_PINECONE == WIFI_MODE_STA
+    printf("[SYSTEM] Starting httpc task\r\n");
+    extern void task_https(void *pvParameters);
+    xTaskCreateStatic(task_https, (char*)"httpc", 8192, NULL, 10, httpc_stack, &httpc_task);
+    /*   printf("[SYSTEM] Starting http task\r\n"); */
+    /*   extern void task_http(void *pvParameters);
+    xTaskCreateStatic(task_http, (char*)"http", 1024, NULL, 10, http_stack, &http_task); */
+    #endif
+    printf("[SYSTEM] Starting WiFi task\r\n");
+    extern void task_wifi(void *pvParameters);
+    xTaskCreateStatic(task_wifi, (char*)"wifi", 1024, NULL, 16, wifi_stack, &wifi_task);
 
     xTaskCreateStatic(
         task_mq4,
