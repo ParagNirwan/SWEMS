@@ -1,6 +1,6 @@
 [submodule "SWEMS/iot-backend"]
 	path = SWEMS/iot-backend
-	url = https://github.com/yadavamit2611/iot-frontend
+	url = https://github.com/yadavamit2611/iot-backend
 [submodule "SWEMS/iot-frontend"]
 	path = SWEMS/iot-frontend
 	url = https://github.com/yadavamit2611/iot-frontend
