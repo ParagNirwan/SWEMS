@@ -1,0 +1,7 @@
+# Generated firmware build output
+build_out/
+*.o
+*.d
+*.elf
+*.bin
+*.map
